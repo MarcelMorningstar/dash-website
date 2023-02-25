@@ -1,9 +1,12 @@
+import React from 'react';
+import Navbar from './components/Navbar';
+import "./Styles/main.css";
+
 function App() {
   return (
-    <div>
-      Rolands
-      Pauls
-    </div>
+    <React.Fragment>
+      <Navbar/>
+    </React.Fragment>
   );
 }
 
