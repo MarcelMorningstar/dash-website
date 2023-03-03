@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function RideForm(){
+function RideForm({setChoosing}){
     const [inputs, setInputs] = useState({});
 
     const handleChange = (event) => {
@@ -15,10 +15,10 @@ function RideForm(){
     }
 
     return (
-        <div className='ride-header-form'>
+        <div className='ride-header-form' style={{display:"inline-block"}}>
             <h1 style={{
                 paddingBottom:'10px'
-            }}>Request a Ride Now</h1>
+            }}>Pieprasiet braucienu!</h1>
             <form 
                 onSubmit={handleSubmit} 
                 style=
@@ -34,7 +34,8 @@ function RideForm(){
                     value={inputs.pickuplocation || ""}
                     className='input-text'
                     onChange={handleChange}
-                    placeholder="Pickup Location"
+                    placeholder="Pieņemšanas vieta"
+                    onClick={() => {setChoosing(true)}}
                 />
                 <input 
                     type="text"
@@ -42,12 +43,13 @@ function RideForm(){
                     value={inputs.destination || ""}
                     className='input-text'
                     onChange={handleChange}
-                    placeholder="Destination"
+                    placeholder="Galapunkts"
+                    onClick={() => {setChoosing(true)}}
                 />
                 <input 
                     type="submit"
                     style={{gridColumn:'span 2'}}
-                    value="Request Now"
+                    value="Pieprasīt"
                 />
             </form>
             <br/>

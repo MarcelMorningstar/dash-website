@@ -135,3 +135,9 @@ header .nav-btn{
     padding-top: 80px;
     padding-left: 50%;
 }
+
+.ride-header-map-wrapper{
+    background-color: white;
+    width:400px;
+    height:300px;
+}
