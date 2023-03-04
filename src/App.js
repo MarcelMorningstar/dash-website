@@ -1,12 +1,20 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import "./Styles/main.css";
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <React.Fragment>
-      <Navbar/>
-    </React.Fragment>
+    <><div>
+      <React.Fragment>
+        <Navbar />
+      </React.Fragment>
+      <div className = "page-container">
+        <div className = "content-wrap">
+        </div>
+      </div>
+    </div>
+    <Footer /></>
   );
 }
 

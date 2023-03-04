@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=EB+Garamond&display=swap');
+
+.main-footer{
+    color: white;
+    background-color: darkorange;
+    padding-top: 3em;
+    position: relative;
+    font-family: 'DM Sans', sans-serif;
+    bottom: 0;
+    width: 100%
+}
+
+.row {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 4em;
+    color: white;
+  }
+
+.col {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
