@@ -1,30 +1,28 @@
-import { FaBars, FaTimes} from "react-icons/fa";
-import { useRef } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useState } from "react";
 
-function Navbar(){
-    const navRef = useRef();
+import "../Styles/navbar.css";
 
-    const showNavBar = () => {
-        navRef.current.classList.toggle("responsive_nav")
-    }
+function Navbar() {
+    const [open, setOpen] = useState(false)
 
     return (
-        <header>
+        <nav>
             <h3>Logo</h3>
-            <nav ref = {navRef}>
+            <div className={open ? 'responsive_nav' : ''}>
                 <a href="/#">Home</a>
                 <a href="/#">Order a taxi</a>
                 <a href="/#">Info</a>
                 <a href="/#">Contact us</a>
-                <button className="nav-btn nav-close-btn" onClick = {showNavBar}>
-                    <FaTimes/>
+                <button className='nav-btn nav-close-btn' onClick={() => setOpen(!open)}>
+                    <FaTimes />
                 </button>
-            </nav>
-            <button className="nav-btn nav-close-btn" onClick = {showNavBar}>
+            </div>
+            <button className='nav-btn nav-close-btn' onClick={() => setOpen(!open)}>
                 <FaBars />
             </button>
-        </header>
-     );
+        </nav>
+    );
 }
 
 export default Navbar;

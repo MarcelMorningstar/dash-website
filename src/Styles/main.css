@@ -1,96 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=EB+Garamond&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'DM Sans', sans-serif;
-}
 
-:root{
+:root {
     --mainColor: rgb(255, 152, 61);
     --mainColorLight: rgb(169, 91, 14);
     --secondaryColor: rgb(254, 193, 123);
     --textColor: rgb(255, 255, 255);
 }
 
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 75px;
-    padding: 0 2rem;
-    background-color: rgb(193, 104, 15);
-    color: var(--textColor)
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
 }
 
-nav a{
-    margin: 0 2rem;
-    color: var(--textColor);
-    text-decoration: none;
-}
-
-nav a:hover{
-    color: var(--secondaryColor);
-    transition: 0.2s;
-}
-
-header .nav-btn{
-    padding: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--textColor);
-    visibility: hidden;
-    opacity: 0;
-    font-size: 1.8rem;
-}
-
-.page-container{
-    display: flex;
-    flex-direction: column;
+#page-container {
+    position: relative;
     min-height: 100vh;
 }
 
-.content-wrap{
-    flex: 1;
-}
-
-@media only screen and (max-width: 1200px) {
-    header .nav-btn{
-        visibility: visible;
-        opacity: 1;
-        transition: 1s;
-    }
-
-    header nav{
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5 rem;
-        background-color: var(--mainColor);
-        transform: translateY(-100vh);
-    }
-
-    header .responsive_nav{
-        transform: none;
-        transition: 1s;
-    }
-
-    nav .nav-close-btn{
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        /* transition: 1s; */
-    }
-
-    nav a{
-        font-size: 2.5rem;
-    }
+#content-wrap {
+    position: relative;
+    padding-bottom: 320px;
 }
