@@ -17,7 +17,7 @@ function RideRequestMap(){
 function RequestMapComponent() 
 {
     const defaultProps = {
-        center: {lat: 40.73, lng: -73.93}, 
+        center: {lat: 56.5097, lng: 27.3335}, 
         zoom: 12,
     }
 

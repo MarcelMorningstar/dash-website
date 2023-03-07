@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import "../Styles/rideheader.css";
 import RideForm from './RideForm'
 import RideRequestMap from './RideRequestMap';
 import AppStoreWidget from '../imgs/appstore.png';

@@ -1,0 +1,58 @@
+.ride-header-wrapper{
+    height:400px;
+    
+    /* background-color: #F5AD17; */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='400'%3E%3Cpolygon points='0 0, 200 0, 200 400, 0 400'%0Astyle='fill:black' /%3E%3Cpolygon points='0 0, 1200 0, 1400 400, 100 400'%0Astyle='fill:rgba(245, 173, 23, 0.7)' /%3E%3Cpolygon points='-50 0, 1100 0, 1300 400, 50 400'%0Astyle='fill:%23F5AD17' /%3E%3Cpolygon points='1800 0, 1920 0, 1920 400, 1920 300'%0Astyle='fill:black' /%3E%3C/svg%3E"), url("/public/imgs/header-bg.png");
+    background-color: rgb(0,0,0);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, right top 75%;
+    background-size: cover, 42% auto;
+}
+
+.ride-header-form{
+    position: relative;
+    display: block;
+
+    padding-left: 70px;
+    padding-top: 30px;
+
+    width: 450px;
+    max-width: 450px;
+}
+
+.ride-header-form input[type=text]{
+    border: none;
+    height:40px;
+    padding-left: 15px;
+
+
+    background-color: #ffffffaf;
+}
+
+.ride-header-form input[type=submit]{
+    border: none;
+    height:40px;
+
+    font-weight: bold;
+    font-size: large;
+
+    color:#FFFFFF;
+    background-color: #292B2D;
+}
+
+.ride-header-form input[type=submit]:hover{
+    background-color: #454a4e;
+
+    cursor:pointer;
+}
+
+.ride-header-widgets{
+    padding-top: 80px;
+    padding-left: 50%;
+}
+
+.ride-header-map-wrapper{
+    background-color: white;
+    width:400px;
+    height:300px;
+}

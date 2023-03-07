@@ -1,143 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=EB+Garamond&display=swap');
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-:root{
+:root {
     --mainColor: rgb(255, 152, 61);
     --mainColorLight: rgb(169, 91, 14);
     --secondaryColor: rgb(254, 193, 123);
     --textColor: rgb(255, 255, 255);
 }
 
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 75px;
-    padding: 0 2rem;
-    background-color: rgb(193, 104, 15);
-    color: var(--textColor)
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
 }
 
-nav a{
-    margin: 0 2rem;
-    color: var(--textColor);
-    text-decoration: none;
-}
-
-nav a:hover{
-    color: var(--secondaryColor);
-}
-
-header .nav-btn{
-    padding: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--textColor);
-    visibility: hidden;
-    opacity: 0;
-    font-size: 1.8rem;
-}
-
-@media only screen and (max-width: 1200px) {
-    header .nav-btn{
-        visibility: visible;
-        opacity: 1;
-    }
-
-    header nav{
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5 rem;
-        background-color: var(--mainColor);
-        transition: 1s;
-        transform: translateY(-100vh);
-    }
-
-    header .responsive_nav{
-        transform: none;
-    }
-
-    nav .nav-close-btn{
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-    }
-
-    nav a{
-        font-size: 1.5rem;
-    }
-}
-
-.ride-header-wrapper{
-    height:400px;
-    
-    /* background-color: #F5AD17; */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='400'%3E%3Cpolygon points='0 0, 200 0, 200 400, 0 400'%0Astyle='fill:black' /%3E%3Cpolygon points='0 0, 1200 0, 1400 400, 100 400'%0Astyle='fill:rgba(245, 173, 23, 0.7)' /%3E%3Cpolygon points='-50 0, 1100 0, 1300 400, 50 400'%0Astyle='fill:%23F5AD17' /%3E%3Cpolygon points='1800 0, 1920 0, 1920 400, 1920 300'%0Astyle='fill:black' /%3E%3C/svg%3E"), url("/public/imgs/header-bg.png");
-    background-color: rgb(0,0,0);
-    background-repeat: no-repeat, no-repeat;
-    background-position: left, right top 75%;
-    background-size: cover, 42% auto;
-}
-
-.ride-header-form{
+#page-container {
     position: relative;
-    display: block;
-
-    padding-left: 70px;
-    padding-top: 30px;
-
-    width: 450px;
-    max-width: 450px;
+    min-height: 100vh;
 }
 
-.ride-header-form input[type=text]{
-    border: none;
-    height:40px;
-    padding-left: 15px;
-
-
-    background-color: #ffffffaf;
-}
-
-.ride-header-form input[type=submit]{
-    border: none;
-    height:40px;
-
-    font-weight: bold;
-    font-size: large;
-
-    color:#FFFFFF;
-    background-color: #292B2D;
-}
-
-.ride-header-form input[type=submit]:hover{
-    background-color: #454a4e;
-
-    cursor:pointer;
-}
-
-.ride-header-widgets{
-    padding-top: 80px;
-    padding-left: 50%;
-}
-
-.ride-header-map-wrapper{
-    background-color: white;
-    width:400px;
-    height:300px;
+#content-wrap {
+    position: relative;
+    padding-bottom: 320px;
 }
