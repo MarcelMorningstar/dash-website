@@ -4,8 +4,7 @@ import GoogleMapReact from 'google-map-react';
 function RideRequestMap(){
     return(
         <div className='ride-header-map-wrapper' style={{
-            display:"inline-block", 
-            position:"absolute",
+            display:"block",
             marginTop:'20px',
             marginLeft:'20px'
           }}>
