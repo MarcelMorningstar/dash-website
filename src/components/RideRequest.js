@@ -8,7 +8,13 @@ import AppStoreWidget from '../imgs/appstore.png';
 import PlayStoreWidget from '../imgs/playstore.png';
 
 export default function RideRequest() {
-  const [isChoosing, setIsChoosing] = useState(false);
+  const [isChoosing, setIsChoosing] = useState({
+    state:false,
+    currentChoose:""
+  });
+
+  const startMarker = {lat: 56.5097, lng: 27.3335};
+  const endMarker = {lat: 56.5091, lng: 27.3335};
 
   return (
     <div className='ride-header-wrapper'>
@@ -18,9 +24,12 @@ export default function RideRequest() {
             display:'grid',
             gridTemplateColumns:'auto auto'
           }}>
-            <RideForm setChoosing={setIsChoosing} />
-            {isChoosing &&
-              <RideRequestMap />
+            <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} />
+            {isChoosing.state &&
+              <RideRequestMap 
+                startMarker={startMarker}
+                endMarker={endMarker}
+              />
             }
           </div>
           <div className='ride-header-widgets'>

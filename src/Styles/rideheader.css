@@ -76,7 +76,7 @@
 .ride-header-widgets{
     display: block;
     position: absolute;
-    
+
     bottom: 10px;
 
     width:400px;
@@ -99,5 +99,7 @@
 
     .ride-header-content{
         width:80%;
+
+        transition: width 0.6s;
     }
 }

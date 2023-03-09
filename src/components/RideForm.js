@@ -1,6 +1,7 @@
 import {useState} from 'react';
+import RideFormInput from './RideFormInput';
 
-function RideForm({setChoosing}){
+function RideForm({setChoosing, chooseState}){
     const [inputs, setInputs] = useState({});
 
     const handleChange = (event) => {
@@ -28,24 +29,26 @@ function RideForm({setChoosing}){
                         columnGap:'5px'
                     }}
             >
-                <input 
-                    type="text" 
+                <RideFormInput
                     name="pickuplocation"
                     value={inputs.pickuplocation || ""}
-                    className='input-text'
-                    onChange={handleChange}
-                    placeholder="Pieņemšanas vieta"
-                    onClick={() => {setChoosing(true)}}
+                    handleChange={handleChange}
+                    placeholder="Pieņemšanas punkts"
+                    setChoosing={setChoosing}
+                    inputs={inputs}
+                    chooseState={chooseState}
                 />
-                <input 
-                    type="text"
+                
+                <RideFormInput
                     name="destination"
                     value={inputs.destination || ""}
-                    className='input-text'
-                    onChange={handleChange}
+                    handleChange={handleChange}
                     placeholder="Galapunkts"
-                    onClick={() => {setChoosing(true)}}
+                    setChoosing={setChoosing}
+                    inputs={inputs}
+                    chooseState={chooseState}
                 />
+
                 <input 
                     type="submit"
                     style={{gridColumn:'span 2'}}

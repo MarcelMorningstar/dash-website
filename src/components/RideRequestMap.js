@@ -1,20 +1,23 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 
-function RideRequestMap(){
+function RideRequestMap({startMarker,endMarker}){
     return(
         <div className='ride-header-map-wrapper' style={{
             display:"block",
             marginTop:'20px',
             marginLeft:'20px'
           }}>
-            <RequestMapComponent />
+            <RequestMapComponent
+                startMarker={startMarker}
+                endMarker={endMarker}
+            />
         </div>
     );
 }
 
-function RequestMapComponent() 
-{
+function RequestMapComponent({startMarker,endMarker}) 
+{    
     const defaultProps = {
         center: {lat: 56.5097, lng: 27.3335}, 
         zoom: 12,
@@ -28,9 +31,14 @@ function RequestMapComponent()
                 defaultZoom={defaultProps.zoom}
             >
                 <RequestMapMarker
-                    lat={defaultProps.center.lat}
-                    lng={defaultProps.center.lng}
-                    text="My Marker"
+                    lat={startMarker.lat}
+                    lng={startMarker.lng}
+                    text="Start"
+                />
+                <RequestMapMarker
+                    lat={endMarker.lat}
+                    lng={endMarker.lng}
+                    text="End"
                 />
             </GoogleMapReact>
         </div>
