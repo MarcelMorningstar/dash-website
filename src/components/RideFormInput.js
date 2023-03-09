@@ -1,6 +1,7 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { useRef, useEffect } from "react";
 
-function RideFormInput({name, placeholder, value, handleChange, setChoosing, chooseState}){
+function RideFormInput({name, placeholder, value, handleChange, setChoosing, chooseState}){    
     return(
         <div
             style={{

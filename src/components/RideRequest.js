@@ -13,8 +13,8 @@ export default function RideRequest() {
     currentChoose:""
   });
 
-  const startMarker = {lat: 56.5097, lng: 27.3335};
-  const endMarker = {lat: 56.5091, lng: 27.3335};
+  const [startMarker, setStartMarker] = useState({lat: 56.5097, lng: 27.3335});
+  const [endMarker, setEndMarker] = useState({lat: 56.5091, lng: 27.3335});
 
   return (
     <div className='ride-header-wrapper'>
@@ -29,6 +29,9 @@ export default function RideRequest() {
               <RideRequestMap 
                 startMarker={startMarker}
                 endMarker={endMarker}
+                chooseState={isChoosing}
+                setStartMarker={setStartMarker}
+                setEndMarker={setEndMarker}
               />
             }
           </div>
