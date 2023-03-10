@@ -43,16 +43,20 @@ function RequestMapComponent({startMarker,endMarker,chooseState,setStartMarker,s
                 defaultZoom={defaultProps.zoom}
                 onClick={_onClick}
             >
-                <RequestMapMarker
-                    lat={startMarker.lat}
-                    lng={startMarker.lng}
-                    text="Start"
-                />
-                <RequestMapMarker
-                    lat={endMarker.lat}
-                    lng={endMarker.lng}
-                    text="End"
-                />
+                {startMarker !== null &&
+                    <RequestMapMarker
+                        lat={startMarker.lat}
+                        lng={startMarker.lng}
+                        text="Start"
+                    />
+                }
+                {endMarker !== null &&
+                    <RequestMapMarker
+                        lat={endMarker.lat}
+                        lng={endMarker.lng}
+                        text="End"
+                    />
+                }
             </GoogleMapReact>
         </div>
     )

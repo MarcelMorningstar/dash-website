@@ -13,8 +13,8 @@ export default function RideRequest() {
     currentChoose:""
   });
 
-  const [startMarker, setStartMarker] = useState({lat: 56.5097, lng: 27.3335});
-  const [endMarker, setEndMarker] = useState({lat: 56.5091, lng: 27.3335});
+  const [startMarker, setStartMarker] = useState(null);
+  const [endMarker, setEndMarker] = useState(null);
 
   return (
     <div className='ride-header-wrapper'>
