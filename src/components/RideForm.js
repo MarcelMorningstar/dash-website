@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import RideFormInput from './RideFormInput';
 
-function RideForm({setChoosing, chooseState}){
+function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
     const [inputs, setInputs] = useState({});
 
     const handleChange = (event) => {
@@ -37,6 +37,9 @@ function RideForm({setChoosing, chooseState}){
                     setChoosing={setChoosing}
                     inputs={inputs}
                     chooseState={chooseState}
+                    setStartMarker={setStartMarker}
+                    setEndMarker={setEndMarker}
+                    setInputs={setInputs}
                 />
                 
                 <RideFormInput
@@ -47,6 +50,9 @@ function RideForm({setChoosing, chooseState}){
                     setChoosing={setChoosing}
                     inputs={inputs}
                     chooseState={chooseState}
+                    setStartMarker={setStartMarker}
+                    setEndMarker={setEndMarker}
+                    setInputs={setInputs}
                 />
 
                 <input 

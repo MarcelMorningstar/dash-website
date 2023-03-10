@@ -24,7 +24,7 @@ export default function RideRequest() {
             display:'grid',
             gridTemplateColumns:'auto auto'
           }}>
-            <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} />
+            <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} />
             {isChoosing.state &&
               <RideRequestMap 
                 startMarker={startMarker}
