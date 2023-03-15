@@ -19,10 +19,9 @@ export default function RideRequest() {
   return (
     <div className='ride-header-wrapper'>
       <div className='ride-header-content'>
-          <div style={{
+          <div className='ride-header-content-grid'  style={{
             paddingTop:'20px',
-            display:'grid',
-            gridTemplateColumns:'auto auto'
+            display:'grid'
           }}>
             <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} />
             {isChoosing.state &&

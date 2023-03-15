@@ -63,7 +63,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
             </form>
             <br/>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident veritatis id, tempora accusantium maxime ut quo doloremque veniam ullam dolore animi aperiam odit atque, facilis dolorem hic! Asperiores, aperiam nulla.
+                Uzklikšķiniet uz vienu no laukiem, lai parādītu karti. Ierakstiet laukā 'pieņemšanas punkts' adresi, no kuras jūs vēlaties izbraukt. Laukā 'galapunkts' ierakstiet gala punkta adresi.
             </p>
         </div>
     )

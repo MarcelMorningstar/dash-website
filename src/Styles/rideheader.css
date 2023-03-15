@@ -88,6 +88,12 @@
     height:300px;
 }
 
+.ride-header-content-grid{
+    padding-top: 20px;
+    display:grid;
+    grid-template-columns: auto auto;
+}
+
 @media (max-width:1580px){
     .ride-header-background-container{
         width: 100%;
@@ -101,5 +107,21 @@
         width:80%;
 
         transition: width 0.6s;
+    }
+}
+
+@media (max-width:1000px){
+    .ride-header-wrapper{
+        height:800px;
+    }
+
+    .ride-header-background{
+        height: 800px;
+    }
+
+    .ride-header-content-grid{
+        padding-top: 20px;
+        display:grid;
+        grid-template-columns: auto;
     }
 }
