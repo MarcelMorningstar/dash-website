@@ -1,8 +1,6 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
-import "../Styles/navbar.css";
-
 function Navbar() {
     const [open, setOpen] = useState(false)
 

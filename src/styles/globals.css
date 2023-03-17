@@ -1,3 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=EB+Garamond&display=swap');
+
+:root {
+  --mainColor: rgb(255, 152, 61);
+  --mainColorLight: rgb(169, 91, 14);
+  --secondaryColor: rgb(254, 193, 123);
+  --textColor: rgb(255, 255, 255);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  position: relative;
+  padding-bottom: 320px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+}
+
+footer .container {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(37, 37, 37);
+}
+
+footer .container .row {
+  display: flex;
+  align-items: top;
+  justify-content: right;
+  height: 100%;
+  color: white;
+}
+
+footer .container .row .col {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+@media only screen and (max-width: 600px) {
+  footer .container{
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s;
+  }
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -37,6 +96,8 @@ nav .nav-btn {
     opacity: 1;
     transition: 1s;
   }
+
+  
 
   nav > div {
     position: fixed;

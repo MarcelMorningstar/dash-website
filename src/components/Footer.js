@@ -1,7 +1,5 @@
 import React from 'react';
 
-import "../Styles/footer.css";
-
 const Footer = () => {
     return (
         <footer>
@@ -9,33 +7,22 @@ const Footer = () => {
                 <div className="row">
                     {/* (Column 1) */}
                     <div className="col">
-                        <h1>Payment information</h1>
+                        <h1>Services</h1>
                         <ul>
-                            <li>Taxi taxi taxi</li>
-                            <li>Contact number something</li>
-                            <li>I am the king</li>
-                            <li>Taxi king</li>
+                            <li>Taxi</li>
+                            <li>Become a driver </li>
                         </ul>
                     </div>
                     {/* (Column 2) */}
                     <div className="col">
-                        <h1>Contact us</h1>
+                        <h1>Company</h1>
                         <ul>
-                            <li>Big trucks</li>
-                            <li>Contact </li>
-                            <li> T kings</li>
-                        </ul>
-                    </div>
-                    {/* (Column 3) */}
-                    <div className="col">
-                        <h1>About us</h1>
-                        <ul>
-                            <li>I am tired</li>
-                            <li>HELp!!! </li>
+                            <li>About us</li>
+                            <li>Contact us </li>
+                            <li>Privacy policy </li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </footer>
     )
