@@ -5,6 +5,7 @@ import Map from './Map';
 
 import AppStoreWidget from '../imgs/appstore.png';
 import PlayStoreWidget from '../imgs/playstore.png';
+import headerImage from '../imgs/header-bg.png';
 
 import styles from "../styles/Header.module.css";
 
@@ -19,10 +20,7 @@ export default function Header() {
 
   return (
     <div className={styles['ride-header-content']}>
-      <div className={styles['ride-header-content-grid']}  style={{
-        paddingTop:'20px',
-        display:'grid'
-      }}>
+      <div className={styles['ride-header-content-grid']}>
         <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} />
 
         {isChoosing.state &&
@@ -34,11 +32,16 @@ export default function Header() {
             setEndMarker={setEndMarker}
           />
         }
+
+        <div className={styles['ride-header-widgets']}>
+          <Image src={AppStoreWidget} alt="appstore"/>
+          <Image src={PlayStoreWidget} alt="playstore"/>
+        </div>
       </div>
       
-      <div className={styles['ride-header-widgets']}>
-        <Image src={AppStoreWidget} alt="appstore"/>
-        <Image src={PlayStoreWidget} alt="playstore"/>
+
+      <div>
+        <Image src={headerImage} alt="header" />
       </div>
     </div>
   )
