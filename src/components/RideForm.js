@@ -65,7 +65,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
             </form>
             <br/>
             <p>
-                Uzklikšķiniet uz vienu no laukiem, lai parādītu karti. Ierakstiet laukā 'pieņemšanas punkts' adresi, no kuras jūs vēlaties izbraukt. Laukā 'galapunkts' ierakstiet gala punkta adresi.
+                Uzklikšķiniet uz vienu no laukiem, lai parādītu karti. Ierakstiet laukā pieņemšanas punkts adresi, no kuras jūs vēlaties izbraukt. Laukā galapunkts ierakstiet gala punkta adresi.
             </p>
         </div>
     )
