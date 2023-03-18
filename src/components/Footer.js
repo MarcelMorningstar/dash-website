@@ -9,19 +9,19 @@ const Footer = () => {
                 <div className="row">
                     {/* (Column 1) */}
                     <div className="col">
-                        <h1>Services</h1>
+                        <h3>Services</h3>
                         <ul>
-                            <li>Taxi</li>
-                            <li>Become a driver </li>
+                            <li><a href="#" className="link">Taxi</a></li>
+                            <li><a href="#" className="link">Become a driver</a></li>
                         </ul>
                     </div>
                     {/* (Column 2) */}
                     <div className="col">
-                        <h1>Company</h1>
+                        <h3>Company</h3>
                         <ul>
-                            <li>About us</li>
-                            <li>Contact us </li>
-                            <li>Privacy policy </li>
+                            <li><a href="#" className="link">About us</a></li>
+                            <li><a href="#" className="link">Contact us</a></li>
+                            <li><a href="#" className="link">Privacy policy</a></li>
                         </ul>
                     </div>
                 </div>

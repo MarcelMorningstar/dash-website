@@ -1,16 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=EB+Garamond&display=swap');
 
 :root {
-    --mainColor: rgb(255, 152, 61);
-    --mainColorLight: rgb(169, 91, 14);
-    --secondaryColor: rgb(254, 193, 123);
-    --textColor: rgb(255, 255, 255);
+    --mainColor: rgb(255, 255, 255);
+    --mainColorLight: rgb(220, 220, 220);
+    --secondaryColor: rgb(255, 255, 255);
+    --textColor: rgb(0, 0, 0);
 }
 
 * {
     padding: 0;
     margin: 0;
     font-family: 'DM Sans', sans-serif;
+}
+
+li{
+    list-style-type: none;
 }
 
 #page-container {

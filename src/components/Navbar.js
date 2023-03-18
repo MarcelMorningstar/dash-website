@@ -8,10 +8,10 @@ function Navbar() {
 
     return (
         <nav>
-            <h3>Logo</h3>
+            <h1>DASH</h1>
             <div className={open ? 'responsive_nav' : ''}>
-                <a href="/#">Home</a>
-                <a href="/#">Order a taxi</a>
+                <a href="/#">Ride</a>
+                <a href="/#">Driver</a>
                 <a href="/#">Info</a>
                 <a href="/#">Contact us</a>
                 <button className='nav-btn nav-close-btn' onClick={() => setOpen(!open)}>
