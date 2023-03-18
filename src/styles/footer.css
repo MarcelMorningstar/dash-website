@@ -22,8 +22,12 @@ footer .container .row {
     color: white;
 }
 
+<<<<<<< HEAD:src/Styles/footer.css
 .col {
     padding-top: 2em;
+=======
+footer .container .row .col {
+>>>>>>> refs/remotes/origin/main:src/styles/footer.css
     padding-left: 2em;
     padding-right: 8em;
 }
