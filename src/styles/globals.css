@@ -3,7 +3,6 @@
 :root {
   --primary: #F5AD17;
   --secondary: #292B2D;
-  --mainColorLight: rgb(169, 91, 14);
   --secondaryTextColor: rgb(255, 255, 255);
   --textColor: rgb(0, 0, 0);
 }
@@ -14,7 +13,7 @@
   font-family: 'DM Sans', sans-serif;
 }
 
-li{
+li {
   list-style-type: none;
 }
 
@@ -96,16 +95,13 @@ nav .nav-btn {
   font-size: 1.8rem;
 }
 
-nav .nav-menu-btn{
-  display: block;
-}
-
 @media only screen and (max-width: 800px) {
   nav .nav-btn {
     visibility: visible;
     opacity: 1;
     transition: 1s;
   }
+
   nav > div {
     position: fixed;
     z-index: 9;
@@ -117,23 +113,24 @@ nav .nav-menu-btn{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5 rem;
     background-color: var(--mainColor);
     transform: translateY(-100vh);
   }
 
-  nav .responsive_nav {
+  nav.open > div {
+    background-color: rgba(211, 144, 9, .8);
     transform: none;
     transition: 1s;
   }
-  nav .nav-menu-btn.closed{
+
+  nav.open .nav-menu-btn {
     display: none;
   }
 
   nav > div .nav-close-btn {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 16px;
+    right: 32px;
   }
 
   nav > div a {

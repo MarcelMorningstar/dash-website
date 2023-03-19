@@ -6,9 +6,9 @@ function Navbar() {
     const [open, setOpen] = useState(false)
 
     return (
-        <nav>
+        <nav className={open ? 'open' : ''}>
             <h1>DASH</h1>
-            <div className={open ? 'responsive_nav' : ''}>
+            <div>
                 <Link href="/">Home</Link>
                 <Link href="/">Driver</Link>
                 <Link href="/">Info</Link>
@@ -17,7 +17,7 @@ function Navbar() {
                     <FaTimes />
                 </button>
             </div>
-            <button className={open ? 'nav-btn nav-menu-btn' : 'nav-btn nav-menu-btn closed'} onClick={() => setOpen(!open)}>
+            <button className='nav-btn nav-menu-btn' onClick={() => setOpen(!open)}>
                 <FaBars />
             </button>
         </nav>
