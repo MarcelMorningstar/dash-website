@@ -14,6 +14,10 @@
   font-family: 'DM Sans', sans-serif;
 }
 
+li{
+  list-style-type: none;
+}
+
 #page-container {
   position: relative;
   min-height: 100vh;
@@ -47,7 +51,12 @@ footer .container .row {
 
 footer .container .row .col {
   padding-left: 2em;
-  padding-right: 2em;
+  padding-right: 8em;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(170, 170, 170);
 }
 
 @media only screen and (max-width: 600px) {
@@ -132,3 +141,4 @@ nav .nav-btn {
     font-size: 2.5rem;
   }
 }
+
