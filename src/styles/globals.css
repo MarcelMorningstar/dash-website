@@ -4,8 +4,8 @@
   --primary: #F5AD17;
   --secondary: #292B2D;
   --mainColorLight: rgb(169, 91, 14);
-  --secondaryColor: rgb(254, 193, 123);
-  --textColor: rgb(255, 255, 255);
+  --secondaryTextColor: rgb(255, 255, 255);
+  --textColor: rgb(0, 0, 0);
 }
 
 * {
@@ -43,7 +43,7 @@ footer .container {
 
 footer .container .row {
   display: flex;
-  align-items: top;
+  align-items: center;
   justify-content: right;
   height: 100%;
   color: white;
@@ -57,14 +57,6 @@ footer .container .row .col {
 .link {
   text-decoration: none;
   color: rgb(170, 170, 170);
-}
-
-@media only screen and (max-width: 600px) {
-  footer .container{
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.2s;
-  }
 }
 
 nav {
@@ -87,7 +79,7 @@ nav > div a {
 }
 
 nav > div a:hover {
-  color: var(--secondaryColor);
+  color: var(--secondaryTextColor);
   background-color: black;
   transition: 0.2s;
 }
@@ -104,6 +96,10 @@ nav .nav-btn {
   font-size: 1.8rem;
 }
 
+nav .nav-menu-btn{
+  display: block;
+}
+
 @media only screen and (max-width: 800px) {
   nav .nav-btn {
     visibility: visible;
@@ -112,10 +108,10 @@ nav .nav-btn {
   }
   nav > div {
     position: fixed;
+    z-index: 9;
     top: 0;
     left: 0;
     height: 100%;
-    ;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -129,6 +125,9 @@ nav .nav-btn {
   nav .responsive_nav {
     transform: none;
     transition: 1s;
+  }
+  nav .nav-menu-btn.closed{
+    display: none;
   }
 
   nav > div .nav-close-btn {

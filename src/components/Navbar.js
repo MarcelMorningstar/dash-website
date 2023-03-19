@@ -17,7 +17,7 @@ function Navbar() {
                     <FaTimes />
                 </button>
             </div>
-            <button className='nav-btn nav-close-btn' onClick={() => setOpen(!open)}>
+            <button className={open ? 'nav-btn nav-menu-btn' : 'nav-btn nav-menu-btn closed'} onClick={() => setOpen(!open)}>
                 <FaBars />
             </button>
         </nav>
