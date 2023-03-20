@@ -1,0 +1,17 @@
+.download-window{
+    display:flex;
+    flex-direction: column;
+}
+
+.button{
+    color:white;
+    width:50%;
+    background-color:#292B2D;
+    padding:10px 10px;
+    text-align:center;
+}
+
+.button:hover{
+    background-color: #454a4e;
+    cursor: pointer;
+}
