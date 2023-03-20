@@ -10,7 +10,6 @@ function RideRequestMap({startMarker,endMarker,chooseState,setStartMarker,setEnd
     return(
         <div className={styles['ride-header-map-wrapper']} /*'ride-header-map-wrapper'*/ style={{
             display:"block",
-            marginTop:'20px',
             marginLeft:'20px'
           }}>
             <RequestMapComponent

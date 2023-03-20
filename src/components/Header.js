@@ -20,25 +20,25 @@ export default function Header() {
 
   return (
     <div className={styles['ride-header-content']}>
-      <div className={styles['ride-header-content-grid']}>
-        <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} />
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16, marginLeft: 70 }}>
+        <h1>Pieprasiet braucienu!</h1>
 
-        {isChoosing.state &&
-          <Map 
-            startMarker={startMarker}
-            endMarker={endMarker}
-            chooseState={isChoosing}
-            setStartMarker={setStartMarker}
-            setEndMarker={setEndMarker}
-          />
-        }
+        <div className={styles['ride-header-content-grid']}>
+          
 
-        <div className={styles['ride-header-widgets']}>
-          <Image src={AppStoreWidget} alt="appstore"/>
-          <Image src={PlayStoreWidget} alt="playstore"/>
+          <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} />
+
+          {isChoosing.state &&
+            <Map 
+              startMarker={startMarker}
+              endMarker={endMarker}
+              chooseState={isChoosing}
+              setStartMarker={setStartMarker}
+              setEndMarker={setEndMarker}
+            />
+          }
         </div>
       </div>
-      
 
       <div>
         <Image src={headerImage} alt="header" />

@@ -20,9 +20,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
 
     return (
         <div className={styles['ride-header-form']} style={{display:"inline-block"}}>
-            <h1 style={{
-                paddingBottom:'10px'
-            }}>Pieprasiet braucienu!</h1>
+            
             <form 
                 onSubmit={handleSubmit} 
                 style=
