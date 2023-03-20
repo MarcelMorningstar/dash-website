@@ -105,7 +105,7 @@ function DownloadsWindow(props){
                     justifyContent:'center'
                 }}>
                     <div className={styles['button']}>
-                        Get App
+                        Lejupielādēt
                     </div>
                 </div>
             </div>

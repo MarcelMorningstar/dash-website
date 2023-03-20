@@ -30,6 +30,16 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
                         columnGap:'5px'
                     }}
             >
+                <RideFormModeSelector
+                    selections={
+                        [
+                            { id:0, name:'Taksometrs' },
+                            { id:1, name:'Evakuators' }, 
+                            { id:2, name:'Kurjers'}
+                        ]
+                    }
+                />
+
                 <RideFormInput
                     name="pickuplocation"
                     value={inputs.pickuplocation || ""}
@@ -127,6 +137,58 @@ function RideFormInput({name, placeholder, value, handleChange, setChoosing, cho
                     </div>
                 </div>
             }
+        </div>
+    );
+}
+
+function RideFormModeSelector(props){
+    const [selection,setSelection] = useState(0);
+
+    console.log('current selection is ' + selection);
+
+    return(
+        <div
+            style={{
+                color:'black',
+                display:'flex',
+                justifyContent:'space-around',
+                gridColumn:'span 2',
+                height:40
+            }}
+        >
+            {props.selections.map((mode) => (
+                <RideFormModeSelection setSelection={setSelection} currentSelection={selection} key={mode.id} selection={mode} />
+            ))}
+        </div>
+    );
+}
+
+function RideFormModeSelection(props){
+    const _onClick = () => {
+        props.setSelection(props.selection.id);
+    }
+    
+    return(
+        <div
+            onClick={
+                _onClick
+            }
+            style={{
+                backgroundColor: (props.currentSelection == props.selection.id ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.6)'),
+                color: (props.currentSelection == props.selection.id ? 'white' : 'black'),
+                width:'100%',
+                height:'100%',
+                cursor:'pointer'
+            }}
+        >
+            <div style={{
+                display:'flex',
+                justifyContent:'center',
+                paddingTop:10,
+                fontWeight:'light'
+            }}>
+                {props.selection.name}
+            </div>
         </div>
     );
 }

@@ -5,8 +5,6 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import styles from "../styles/Header.module.css";
 
 function RideRequestMap({startMarker,endMarker,chooseState,setStartMarker,setEndMarker}){
-    console.log(styles);
-    
     return(
         <div className={styles['ride-header-map-wrapper']} /*'ride-header-map-wrapper'*/ style={{
             display:"block",
