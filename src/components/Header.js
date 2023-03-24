@@ -9,7 +9,7 @@ import headerImage from '../imgs/header-bg.png';
 
 import styles from "../styles/Header.module.css";
 
-export default function Header() {
+export default function Header(props) {
   const [isChoosing, setIsChoosing] = useState({
     state: false,
     currentChoose: ""
@@ -26,7 +26,7 @@ export default function Header() {
         <div className={styles['ride-header-content-grid']}>
           
 
-          <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} />
+          <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} onAccept={props.onAccept} />
 
           {isChoosing.state &&
             <Map 

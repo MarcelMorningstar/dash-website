@@ -4,7 +4,7 @@ import { usePlacesWidget } from "react-google-autocomplete";
 
 import styles from "../styles/Header.module.css";
 
-function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
+function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAccept}){
     const [inputs, setInputs] = useState({});
 
     const handleChange = (event) => {
@@ -15,6 +15,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        onAccept({'show':true, 'content':<h1>HELLO</h1>});
         console.log(inputs);
     }
 
@@ -34,7 +35,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker}){
                     selections={
                         [
                             { id:0, name:'Taksometrs' },
-                            { id:1, name:'Evakuators' }, 
+                            { id:1, name:'Otrais vadītājs' }, 
                             { id:2, name:'Kurjers'}
                         ]
                     }
