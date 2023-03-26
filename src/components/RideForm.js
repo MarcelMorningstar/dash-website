@@ -36,7 +36,8 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                         [
                             { id:0, name:'Taksometrs' },
                             { id:1, name:'Otrais vadītājs' }, 
-                            { id:2, name:'Kurjers'}
+                            { id:2, name:'Kurjers'},
+                            { id:3, name:'Evakuators'}
                         ]
                     }
                 />
@@ -154,7 +155,8 @@ function RideFormModeSelector(props){
                 display:'flex',
                 justifyContent:'space-around',
                 gridColumn:'span 2',
-                height:40
+                height:40,
+                fontSize:'0.9em'
             }}
         >
             {props.selections.map((mode) => (

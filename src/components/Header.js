@@ -20,15 +20,14 @@ export default function Header(props) {
 
   return (
     <div className={styles['ride-header-content']}>
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16, marginLeft: 70 }}>
-        <h1>Pieprasiet braucienu!</h1>
-
-        <div className={styles['ride-header-content-grid']}>
-          
-
-          <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} onAccept={props.onAccept} />
-
-          {isChoosing.state &&
+      <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
+          <div style={{paddingTop:20}}>
+            <h1>Pieprasiet braucienu!</h1>
+            <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} onAccept={props.onAccept} />
+          </div>
+      </div>
+      <div>
+        { isChoosing.state &&
             <Map 
               startMarker={startMarker}
               endMarker={endMarker}
@@ -37,11 +36,6 @@ export default function Header(props) {
               setEndMarker={setEndMarker}
             />
           }
-        </div>
-      </div>
-
-      <div>
-        <Image src={headerImage} alt="header" />
       </div>
     </div>
   )
