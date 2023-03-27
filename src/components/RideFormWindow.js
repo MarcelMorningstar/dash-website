@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react"
 import Map from "./Map";
 import {FiCheckCircle} from 'react-icons/fi';
 
+import styles from '../styles/WindowForm.module.css';
+
 function MultiPageForm(props){
     const [page, setCurrentPage] = useState(0);
 
@@ -30,11 +32,11 @@ function TaxiForm(props){
                 <div>
                     <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
                     <InputSection name="Kontaktinformācija">
-                        <InputGeneric name="Vārds, Uzvārds" />
-                        <InputGeneric name="Telefona numurs" />
+                        <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" />
+                        <InputGeneric placeholder="+371 12341234" name="Telefona numurs" />
                     </InputSection>
                     <InputSection name="Brauciena informācija">
-                        <InputNumber name="Sēdvietu skaits" />
+                        <InputNumber placeholder="0" name="Sēdvietu skaits" />
                         <InputDateTime name="Pieņemšanas laiks" />
                         <InputCheckmark name="Bērnu sēdeklītis" />
                         <InputTextarea name="Papildus komentāri" />
@@ -64,12 +66,12 @@ function SecondDriverForm(props){
                 <div>
                     <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
                     <InputSection name="Kontaktinformācija">
-                        <InputGeneric name="Vārds, Uzvārds" />
-                        <InputGeneric name="Telefona numurs" />
+                        <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" />
+                        <InputGeneric placeholder="+371 12341234" name="Telefona numurs" />
                     </InputSection>
                     <InputSection name="Brauciena informācija">
-                        <InputGeneric name="Autotransporta modelis" />
-                        <InputGeneric name="Autotransporta numurs" />
+                        <InputGeneric placeholder="BMW x5" name="Autotransporta modelis" />
+                        <InputGeneric placeholder="KJ-1234" name="Autotransporta numurs" />
                         <InputDateTime name="Tehniskās apskates iziešanas datums" />
                         <InputDateTime name="Pieņemšanas laiks" />
                     </InputSection>
@@ -101,15 +103,15 @@ function CourierForm(props){
                 <div>
                     <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
                     <InputSection name="Kontaktinformācija">
-                        <InputGeneric name="Izsūtītāja Vārds, Uzvārds" />
-                        <InputGeneric name="Izsūtītāja Telefona numurs" />
-                        <InputGeneric name="Saņēmēja Vārds, Uzvārds" />
-                        <InputGeneric name="Saņēmēja Telefona numurs" />
+                        <InputGeneric placeholder="Jānis Bērziņš" name="Izsūtītāja Vārds, Uzvārds" />
+                        <InputGeneric placeholder="+371 12341234" name="Izsūtītāja Telefona numurs" />
+                        <InputGeneric placeholder="Jānis Bērziņš" name="Saņēmēja Vārds, Uzvārds" />
+                        <InputGeneric placeholder="+371 12341234" name="Saņēmēja Telefona numurs" />
                     </InputSection>
                     <InputSection name="Pasta informācija">
-                        <InputGeneric name="Pasta saturs" />
-                        <InputNumber name="Pasta svars (kg)" />
-                        <InputGeneric name="Pasta izmērs (x, y, z)" />
+                        <InputGeneric placeholder="Dokuments, ēdiens" name="Pasta saturs" />
+                        <InputNumber  placeholder="1"  name="Pasta svars (kg)" />
+                        <InputGeneric placeholder="0.25, 0.31, 0.26"  name="Pasta izmērs (x, y, z) (m)" />
                         <InputDateTime name="Vēlamais saņemšanas datums un laiks" />
                         <InputDateTime name="Vēlamais piegādes datums un laiks" />
                     </InputSection>
@@ -141,12 +143,11 @@ function EvacuatorForm(props){
                 <div>
                     <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
                     <InputSection name="Kontaktinformācija">
-                        <InputGeneric name="Vārds, Uzvārds" />
-                        <InputGeneric name="Telefona numurs" />
+                        <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" />
+                        <InputGeneric placeholder="+371 12341234" name="Telefona numurs" />
                     </InputSection>
                     <InputSection name="Negadījuma informācija">
-                        <InputGeneric name="Autotransporta tips"/>
-                        <InputGeneric name="Negadījuma tips"/>
+                        <InputGeneric placeholder="Viegla automašīna" name="Autotransporta tips"/>
                         <InputTextarea name="Aprakstiet situāciju"/>
                     </InputSection>
                     <div style={{paddingBottom:30}}>
@@ -224,36 +225,38 @@ function FromToInput(props){
     const [endMarker, setEndMarker] = useState(null);
 
     return (
-        <div style={{display:'flex', justifyContent:'space-between', paddingBottom:20}}>
-            <div>
-                <div>
-                    Ceļa informācija:
-                </div>
-                {props.requireStartPoint &&
-                    (
-                    <>
-                        <div>
-                            <p>No:</p>
-                            <input type="text" />
-                        </div>
-                        <div style={{paddingTop:10, paddingBottom:10}}>
-                            V
-                        </div>
-                    </>
-                    )
-                }
-                <div>
-                    <p>Uz:</p>
-                    <input type="text" />
-                </div>
+        <div>
+            <div style={{paddingBottom:10}}>
+                Ceļa informācija:
             </div>
-            <div style={{width:250, height:250}}>
-                <Map 
-                    startMarker={startMarker}
-                    endMarker={endMarker}
-                    setStartMarker={setStartMarker}
-                    setEndMarker={setEndMarker}
-                />
+            <div style={{display:'grid', gridTemplateColumns:'auto 50%', columnGap:20, paddingBottom:20}}>
+                <div>
+                    {props.requireStartPoint &&
+                        (
+                        <>
+                            <div>
+                                <p className={styles['input-label']}>No:</p>
+                                <input className={styles['input']} type="text" />
+                            </div>
+                            <div style={{paddingTop:10, paddingBottom:10}}>
+                                V
+                            </div>
+                        </>
+                        )
+                    }
+                    <div>
+                        <p className={styles['input-label']}>Uz:</p>
+                        <input className={styles['input']} type="text" />
+                    </div>
+                </div>
+                <div style={{width:'100%', height:250}}>
+                    <Map 
+                        startMarker={startMarker}
+                        endMarker={endMarker}
+                        setStartMarker={setStartMarker}
+                        setEndMarker={setEndMarker}
+                    />
+                </div>
             </div>
         </div>
     )
@@ -263,10 +266,10 @@ function InputGeneric(props){
     return (
         <div>
             <div>
-                <p>{props.name}:</p>
+                <p className={styles['input-label']}>{props.name}:</p>
             </div>
             <div>
-                <input type="text" />
+                <input placeholder={props.placeholder} className={styles['input']} type="text" />
             </div>
         </div>
     )
@@ -276,10 +279,10 @@ function InputNumber(props){
     return (
         <div>
             <div>
-                <p>{props.name}:</p>
+                <p className={styles['input-label']}>{props.name}:</p>
             </div>
             <div>
-                <input type="number" />
+                <input placeholder={props.placeholder} className={styles['input']} type="number" />
             </div>
         </div>
     )
@@ -289,10 +292,10 @@ function InputDateTime(props){
     return (
         <div>
             <div>
-                <p>{props.name}:</p>
+                <p className={styles['input-label']}>{props.name}:</p>
             </div>
             <div>
-                <input type="datetime-local" />
+                <input className={styles['input']} type="datetime-local" />
             </div>
         </div>
     )
@@ -302,7 +305,7 @@ function InputCheckmark(props){
     return (
         <div>
             <div>
-                <p>{props.name}:</p>
+                <p className={styles['input-label']}>{props.name}:</p>
             </div>
             <div>
                 <input type="checkbox" />
@@ -315,10 +318,10 @@ function InputTextarea(props){
     return (
         <div style={{gridColumn:'span 2'}}>
             <div>
-                <p>{props.name}:</p>
+                <p className={styles['input-label']} style={{width:'100%'}}>{props.name}:</p>
             </div>
             <div>
-                <textarea>
+                <textarea className={styles['input']}>
 
                 </textarea>
             </div>
@@ -330,7 +333,7 @@ function InputSection(props){
     return (
         <div style={{paddingBottom:40}}>
             <div style={{paddingBottom:10}}>{props.name}:</div>
-            <div style={{display:'grid', gridTemplateColumns:'auto auto', rowGap:15}}>
+            <div style={{display:'grid', gridTemplateColumns:'45% 45%', rowGap:15, justifyContent:'space-between'}}>
                 {props.children}
             </div>
         </div>
@@ -352,8 +355,8 @@ function InputButton(props){
     }
     
     return (
-        <div>
-            <div onClick={_onClick}>
+        <div onClick={_onClick} className={styles['input-button']}>
+            <div>
                 {props.name}
             </div>
         </div>

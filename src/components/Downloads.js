@@ -25,42 +25,64 @@ export default function Downloads(){
                         title="Klients"
                         animProps={{
                             'initial':{
-                                x:-150,
+                                y:-20,
                                 opacity:0
                             },
                             'whileInView':{
-                                x:0,
+                                y:0,
                                 opacity:1
                             },
                             'transition':{
                                 duration:0.75
                             }
                         }}
+                        buttonName="Lejupielādēt"
                     >
-                        <p style={{
-                            textAlign:'left'
-                        }}>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h3>
+                            DASH Taksometru mobilā aplikācija
+                        </h3>
                         <br />
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                        <p>-Izvēlies sev vispiemērotāko automobīli tev nepieciešamajam pakalpojumam!</p>
+                        <p>-Ātri izsauc jau iepriekš pieprasītos maršrutus!</p>
+                        <p>-Seko līdzi savam izsaukumam reallaikā!</p>
+                        <p>-Ātri un automātiski apmaksā braucienu!</p>
                     </DownloadsWindow>
                     <DownloadsWindow 
-                        title="Šoferis"
+                        title="Sadarbība"
                         animProps={{
                             'initial':{
-                                x:150,
+                                y:-20,
                                 opacity:0
                             },
                             'whileInView':{
-                                x:0,
+                                y:0,
                                 opacity:1
                             },
                             'transition':{
                                 duration:0.75
                             }
                         }}
+                        buttonName="Reģistrēties"
                     >
-                        <p>interesanta informācija</p>
+                        <h3>
+                            DASH Uzņēmumu sadarbības programma
+                        </h3>
+                        <br />
+                        <p>-Sadarbojies ar mums un reģistrē savu uzņēmumu DASH reģistrā!</p>
+                        <p>-Saņem uzlabojumus un atvieglojumus pakalpojumu sniegšanā!</p>
                     </DownloadsWindow>
+                    <div 
+                        className={styles['download-window']} 
+                        style={{
+                                position:'relative',
+                                width:'max(300px, 25%)',
+                                backgroundColor:'rgb(240,240,240)'
+                            }}>
+                        
+                        <div>
+                            <iframe style={{border:'none', left:0, top:0, position:'absolute', height:'100%', width:'100%'}} src="https://www.youtube.com/embed/0IuZq7wq4pU?autoplay=1&mute=1" title="YouTube video player"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,7 +96,7 @@ function DownloadsWindow(props){
             whileInView={props.animProps['whileInView']}
             transition={props.animProps['transition']}
             style={{
-                width:'max(300px, 40%)',
+                width:'max(300px, 25%)',
                 backgroundColor:'rgb(240,240,240)'
             }}
         >
@@ -105,7 +127,7 @@ function DownloadsWindow(props){
                     justifyContent:'center'
                 }}>
                     <div className={styles['button']}>
-                        Lejupielādēt
+                        {props.buttonName}
                     </div>
                 </div>
             </div>
