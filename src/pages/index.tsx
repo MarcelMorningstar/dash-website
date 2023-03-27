@@ -10,8 +10,6 @@ export default function Home() {
     setWindowContent(params);
   }
 
-  console.log(windowContent.content);
-
   return (
     <div>
       <Header onAccept={changeWindowContent} />

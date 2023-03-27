@@ -27,15 +27,13 @@ export default function Header(props) {
           </div>
       </div>
       <div>
-        { isChoosing.state &&
-            <Map 
-              startMarker={startMarker}
-              endMarker={endMarker}
-              chooseState={isChoosing}
-              setStartMarker={setStartMarker}
-              setEndMarker={setEndMarker}
-            />
-          }
+          <Map 
+            startMarker={startMarker}
+            endMarker={endMarker}
+            chooseState={isChoosing}
+            setStartMarker={setStartMarker}
+            setEndMarker={setEndMarker}
+          />
       </div>
     </div>
   )

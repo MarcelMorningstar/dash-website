@@ -41,7 +41,7 @@ function RequestMapComponent({startMarker,endMarker,chooseState,setStartMarker,s
                 bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_API_KEY }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
-                onClick={_onClick}
+                //onClick={_onClick}
             >
                 {startMarker !== null &&
                     <RequestMapMarker

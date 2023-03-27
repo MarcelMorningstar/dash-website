@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { usePlacesWidget } from "react-google-autocomplete";
+import { TaxiForm, Authorisation, SuccessWindow, MultiPageForm } from "../components/RideFormWindow";
 
 import styles from "../styles/Header.module.css";
 
@@ -18,9 +19,11 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
         onAccept({
             'show':true, 
             'content':
-                <div>
-                    <h1>HELLO</h1>
-                </div>
+                <MultiPageForm setWindowState={onAccept}>
+                    <TaxiForm/>
+                    <Authorisation/>
+                    <SuccessWindow/>
+                </MultiPageForm>
         });
         console.log(inputs);
     }
@@ -46,6 +49,8 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                             { id:3, name:'Evakuators'}
                         ]
                     }
+                    name='ridetype'
+                    setInputs={setInputs}
                 />
 
                 <RideFormInput
@@ -152,7 +157,9 @@ function RideFormInput({name, placeholder, value, handleChange, setChoosing, cho
 function RideFormModeSelector(props){
     const [selection,setSelection] = useState(0);
 
-    console.log('current selection is ' + selection);
+    useEffect(() => {
+        props.setInputs(values => ({...values, [props.name]: 0}));
+    }, []);
 
     return(
         <div
@@ -166,7 +173,7 @@ function RideFormModeSelector(props){
             }}
         >
             {props.selections.map((mode) => (
-                <RideFormModeSelection setSelection={setSelection} currentSelection={selection} key={mode.id} selection={mode} />
+                <RideFormModeSelection name={props.name} setSelection={setSelection} setInputs={props.setInputs} currentSelection={selection} key={mode.id} selection={mode} />
             ))}
         </div>
     );
@@ -175,6 +182,7 @@ function RideFormModeSelector(props){
 function RideFormModeSelection(props){
     const _onClick = () => {
         props.setSelection(props.selection.id);
+        props.setInputs(values => ({...values, [props.name]: props.selection.id}));
     }
     
     return(
