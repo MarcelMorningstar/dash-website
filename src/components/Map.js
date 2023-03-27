@@ -7,8 +7,7 @@ import styles from "../styles/Header.module.css";
 function RideRequestMap({startMarker,endMarker,chooseState,setStartMarker,setEndMarker}){
     return(
         <div className={styles['ride-header-map-wrapper']} /*'ride-header-map-wrapper'*/ style={{
-            display:"block",
-            marginLeft:'20px'
+            display:"block"
           }}>
             <RequestMapComponent
                 startMarker={startMarker}
