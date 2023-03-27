@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import Map from "./Map";
-import {FiCheckCircle} from 'react-icons/fi';
+import {FiCheckCircle, FiArrowDown} from 'react-icons/fi';
 
 import styles from '../styles/WindowForm.module.css';
 
@@ -171,7 +171,7 @@ function Authorisation(props){
             <div style={{paddingBottom:20}}>
                 <h2>Autorizācija</h2>
             </div>
-            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'400px'}}>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'600px'}}>
                 <div style={{paddingTop:40, textAlign:'center'}}>
                     <p>Autorizācijas kods tika aizsūtīts uz +371 00000000</p>
                     <div style={{display:'flex', justifyContent:'center', columnGap:5, paddingTop:20}}>
@@ -195,7 +195,7 @@ function Authorisation(props){
 function AuthorisationNumber(props){
     return (
         <div style={{width:35, height:40, backgroundColor:'rgba(255,255,255,0.5)'}}>
-            <input placeholder="0" style={{width:'100%', height:'100%', backgroundColor:'rgba(255,255,255,0)', border:'none', textAlign:'right'}} type="number"/>
+            <input placeholder="0" style={{width:'100%', height:'100%', backgroundColor:'rgba(255,255,255,0)', border:'none', textAlign:'center'}} type="text"/>
         </div>
     )
 }
@@ -206,7 +206,7 @@ function SuccessWindow(props){
             <div style={{paddingBottom:20}}>
                 <h2></h2>
             </div>
-            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'400px'}}>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'600px'}}>
                 <div style={{paddingTop:40, textAlign:'center'}}>
                     <div><FiCheckCircle style={{color:'green', height:80, width:'auto'}} /></div>
                     <div>Jūsu izsaukums tika apstiprināts!</div>
@@ -229,7 +229,7 @@ function FromToInput(props){
             <div style={{paddingBottom:10}}>
                 Ceļa informācija:
             </div>
-            <div style={{display:'grid', gridTemplateColumns:'auto 50%', columnGap:20, paddingBottom:20}}>
+            <div style={{display:'grid', gridTemplateColumns:'45% 45%', justifyContent:'space-between', paddingBottom:20}}>
                 <div>
                     {props.requireStartPoint &&
                         (
@@ -239,7 +239,7 @@ function FromToInput(props){
                                 <input className={styles['input']} type="text" />
                             </div>
                             <div style={{paddingTop:10, paddingBottom:10}}>
-                                V
+                                <FiArrowDown />
                             </div>
                         </>
                         )
@@ -249,7 +249,7 @@ function FromToInput(props){
                         <input className={styles['input']} type="text" />
                     </div>
                 </div>
-                <div style={{width:'100%', height:250}}>
+                <div style={{width:'100%', height:250, border:'solid'}}>
                     <Map 
                         startMarker={startMarker}
                         endMarker={endMarker}
@@ -262,7 +262,7 @@ function FromToInput(props){
     )
 }
 
-function InputGeneric(props){
+function InputGeneric(props){    
     return (
         <div>
             <div>
@@ -333,7 +333,7 @@ function InputSection(props){
     return (
         <div style={{paddingBottom:40}}>
             <div style={{paddingBottom:10}}>{props.name}:</div>
-            <div style={{display:'grid', gridTemplateColumns:'45% 45%', rowGap:15, justifyContent:'space-between'}}>
+            <div style={{display:'grid', gridTemplateColumns:'45% 45%', rowGap:15, justifyContent:'space-between',}} className={styles['input-section']}>
                 {props.children}
             </div>
         </div>

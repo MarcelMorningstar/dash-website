@@ -23,7 +23,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'taxi',
             'requireStartpoint':true,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs}}>
                     <TaxiForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -33,7 +33,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'secondDriver',
             'requireStartpoint':true,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs}}>
                     <SecondDriverForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -43,7 +43,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'courier',
             'requireStartpoint':true,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs}}>
                     <CourierForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -53,7 +53,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'evacuator',
             'requireStartpoint':false,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':false}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':false, 'inputs':inputs}}>
                     <EvacuatorForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -147,12 +147,13 @@ function RideFormInput({name, placeholder, value, handleChange, setChoosing, cho
         apiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
         onPlaceSelected: (place) => {
             setInputs(values => ({...values, [name]: place.formatted_address}));
-            
+            /*
             if(name === "pickuplocation"){
                 setStartMarker({'lat':place.geometry.location.lat(), 'lng':place.geometry.location.lng()});
             }else{
                 setEndMarker({'lat':place.geometry.location.lat(), 'lng':place.geometry.location.lng()});
             }
+            */
         },
         options:{
             types:['address'],
@@ -178,7 +179,7 @@ function RideFormInput({name, placeholder, value, handleChange, setChoosing, cho
                 className={styles['input-text']}
                 onChange={handleChange}
                 placeholder={placeholder}
-                onClick={() => {setChoosing({state:true, currentChoose:name})}}
+                onFocus={() => {setChoosing({state:true, currentChoose:name})}}
                 ref={ref}
             />
             {

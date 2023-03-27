@@ -38,7 +38,7 @@ function RequestMapComponent({startMarker,endMarker,chooseState,setStartMarker,s
     return (
         <div className={styles['google-map']}/*"google-map"*/ style={{height:'100%', width:'100%'}}>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_API_KEY }}
+                bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_API_KEY, libraries:['places'] }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
                 //onClick={_onClick}
