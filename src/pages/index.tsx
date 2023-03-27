@@ -12,7 +12,6 @@ export default function Home() {
 
   return (
     <div>
-      <Header onAccept={changeWindowContent} />
       {windowContent.show !== false &&
         (
           <Window changeContent={changeWindowContent}>
@@ -20,6 +19,7 @@ export default function Home() {
           </Window>
         )
       }
+      <Header onAccept={changeWindowContent} />
       <Downloads />
     </div>
   )

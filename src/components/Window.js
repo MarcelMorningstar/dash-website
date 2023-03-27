@@ -17,7 +17,9 @@ export default function Window(props){
                     {props.children}
                 </div>
             </div>
-            <div className={styles['window-background']} />
+            <div className={styles['window-background-parent']}>
+                <div className={styles['window-background']} />
+            </div>
         </div>
     );
 }
