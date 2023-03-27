@@ -15,7 +15,13 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onAccept({'show':true, 'content':<h1>HELLO</h1>});
+        onAccept({
+            'show':true, 
+            'content':
+                <div>
+                    <h1>HELLO</h1>
+                </div>
+        });
         console.log(inputs);
     }
 
