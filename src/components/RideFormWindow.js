@@ -8,6 +8,7 @@ function MultiPageForm(props){
     const clonedPage = React.cloneElement(props.children[page], {
         'setPage':setCurrentPage,
         'setWindowState':props.setWindowState,
+        'extraData':props.extraData
     })
 
     return (
@@ -27,14 +28,13 @@ function TaxiForm(props){
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                 <div>
-                    <FromToInput/>
+                    <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
                     <InputSection name="Kontaktinformācija">
                         <InputGeneric name="Vārds, Uzvārds" />
                         <InputGeneric name="Telefona numurs" />
                     </InputSection>
                     <InputSection name="Brauciena informācija">
                         <InputNumber name="Sēdvietu skaits" />
-                        <InputGeneric name="Telefona numurs" />
                         <InputDateTime name="Pieņemšanas laiks" />
                         <InputCheckmark name="Bērnu sēdeklītis" />
                         <InputTextarea name="Papildus komentāri" />
@@ -50,7 +50,116 @@ function TaxiForm(props){
                     <InputButton name="Turpināt" click={() => {props.setPage(1)}}/>
                 </div>
             </div>
-            
+        </div>
+    )
+}
+
+function SecondDriverForm(props){
+    return (
+        <div>
+            <div style={{paddingBottom:20}}>
+                <h2>Otrā vadītāja izsaukšana</h2>
+            </div>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                <div>
+                    <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
+                    <InputSection name="Kontaktinformācija">
+                        <InputGeneric name="Vārds, Uzvārds" />
+                        <InputGeneric name="Telefona numurs" />
+                    </InputSection>
+                    <InputSection name="Brauciena informācija">
+                        <InputGeneric name="Autotransporta modelis" />
+                        <InputGeneric name="Autotransporta numurs" />
+                        <InputDateTime name="Tehniskās apskates iziešanas datums" />
+                        <InputDateTime name="Pieņemšanas laiks" />
+                    </InputSection>
+                    <div style={{paddingBottom:30}}>
+                        <InputConfirmation>
+                            Apstiprinu, ka mans autotransporta līdzeklis pakļaujas Otrā Vadītāja izsaukšanas noteikumiem.
+                        </InputConfirmation>
+                        <InputConfirmation>
+                            Es piekrītu lietošanas noteikumiem.
+                        </InputConfirmation>
+                    </div>
+                </div>
+                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
+                    <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
+                    <InputButton name="Turpināt" click={() => {props.setPage(1)}}/>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function CourierForm(props){
+    return (
+        <div>
+            <div style={{paddingBottom:20}}>
+                <h2>Kurjera izsaukšana</h2>
+            </div>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                <div>
+                    <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
+                    <InputSection name="Kontaktinformācija">
+                        <InputGeneric name="Izsūtītāja Vārds, Uzvārds" />
+                        <InputGeneric name="Izsūtītāja Telefona numurs" />
+                        <InputGeneric name="Saņēmēja Vārds, Uzvārds" />
+                        <InputGeneric name="Saņēmēja Telefona numurs" />
+                    </InputSection>
+                    <InputSection name="Pasta informācija">
+                        <InputGeneric name="Pasta saturs" />
+                        <InputNumber name="Pasta svars (kg)" />
+                        <InputGeneric name="Pasta izmērs (x, y, z)" />
+                        <InputDateTime name="Vēlamais saņemšanas datums un laiks" />
+                        <InputDateTime name="Vēlamais piegādes datums un laiks" />
+                    </InputSection>
+                    <div style={{paddingBottom:30}}>
+                        <InputConfirmation>
+                            Apstiprinu, ka mans pasts pakļaujas Kurjera izsaukšanas noteikumiem.
+                        </InputConfirmation>
+                        <InputConfirmation>
+                            Es piekrītu lietošanas noteikumiem.
+                        </InputConfirmation>
+                    </div>
+                </div>
+                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
+                    <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
+                    <InputButton name="Turpināt" click={() => {props.setPage(1)}}/>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function EvacuatorForm(props){
+    return (
+        <div>
+            <div style={{paddingBottom:20}}>
+                <h2>Evakuatora izsaukšana</h2>
+            </div>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                <div>
+                    <FromToInput requireStartPoint={props.extraData.requireStartPoint}/>
+                    <InputSection name="Kontaktinformācija">
+                        <InputGeneric name="Vārds, Uzvārds" />
+                        <InputGeneric name="Telefona numurs" />
+                    </InputSection>
+                    <InputSection name="Negadījuma informācija">
+                        <InputGeneric name="Autotransporta tips"/>
+                        <InputGeneric name="Negadījuma tips"/>
+                        <InputTextarea name="Aprakstiet situāciju"/>
+                    </InputSection>
+                    <div style={{paddingBottom:30}}>
+                        <InputConfirmation>
+                            Es piekrītu lietošanas noteikumiem.
+                        </InputConfirmation>
+                    </div>
+                </div>
+                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
+                    <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
+                    <InputButton name="Turpināt" click={() => {props.setPage(1)}}/>
+                </div>
+            </div>
         </div>
     )
 }
@@ -59,7 +168,7 @@ function Authorisation(props){
     return (
         <div>
             <div style={{paddingBottom:20}}>
-                <h2>Taksometra izsaukšana</h2>
+                <h2>Autorizācija</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'400px'}}>
                 <div style={{paddingTop:40, textAlign:'center'}}>
@@ -94,7 +203,7 @@ function SuccessWindow(props){
     return (
         <div>
             <div style={{paddingBottom:20}}>
-                <h2>Taksometra izsaukšana</h2>
+                <h2></h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'400px'}}>
                 <div style={{paddingTop:40, textAlign:'center'}}>
@@ -110,7 +219,7 @@ function SuccessWindow(props){
     )
 }
 
-function FromToInput(){
+function FromToInput(props){
     const [startMarker, setStartMarker] = useState(null);
     const [endMarker, setEndMarker] = useState(null);
 
@@ -120,15 +229,21 @@ function FromToInput(){
                 <div>
                     Ceļa informācija:
                 </div>
+                {props.requireStartPoint &&
+                    (
+                    <>
+                        <div>
+                            <p>No:</p>
+                            <input type="text" />
+                        </div>
+                        <div style={{paddingTop:10, paddingBottom:10}}>
+                            V
+                        </div>
+                    </>
+                    )
+                }
                 <div>
-                    <p>No:</p>
-                    <input type="text" />
-                </div>
-                <div style={{paddingTop:10, paddingBottom:10}}>
-                    V
-                </div>
-                <div>
-                    <p>Līdz:</p>
+                    <p>Uz:</p>
                     <input type="text" />
                 </div>
             </div>
@@ -249,5 +364,8 @@ export {
     TaxiForm,
     Authorisation,
     SuccessWindow,
-    MultiPageForm
+    MultiPageForm,
+    SecondDriverForm,
+    CourierForm,
+    EvacuatorForm
 };

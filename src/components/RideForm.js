@@ -1,12 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { usePlacesWidget } from "react-google-autocomplete";
-import { TaxiForm, Authorisation, SuccessWindow, MultiPageForm } from "../components/RideFormWindow";
+import { TaxiForm, Authorisation, SuccessWindow, MultiPageForm, SecondDriverForm, CourierForm, EvacuatorForm } from "../components/RideFormWindow";
 
 import styles from "../styles/Header.module.css";
 
 function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAccept}){
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        'ridetype':0,
+        'pickuplocation':'',
+        'destination':''
+    });
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -14,16 +18,56 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
         setInputs(values => ({...values, [name]: value}));
     }
 
+    const rideTypes = [
+        {
+            'name':'taxi',
+            'requireStartpoint':true,
+            'content':
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true}}>
+                    <TaxiForm/>
+                    <Authorisation/>
+                    <SuccessWindow/>
+                </MultiPageForm>
+        },
+        {
+            'name':'secondDriver',
+            'requireStartpoint':true,
+            'content':
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true}}>
+                    <SecondDriverForm/>
+                    <Authorisation/>
+                    <SuccessWindow/>
+                </MultiPageForm>
+        },
+        {
+            'name':'courier',
+            'requireStartpoint':true,
+            'content':
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true}}>
+                    <CourierForm/>
+                    <Authorisation/>
+                    <SuccessWindow/>
+                </MultiPageForm>
+        },
+        {
+            'name':'evacuator',
+            'requireStartpoint':false,
+            'content':
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':false}}>
+                    <EvacuatorForm/>
+                    <Authorisation/>
+                    <SuccessWindow/>
+                </MultiPageForm>
+        }
+    ]
+
+    //Show ride form window when submitting this temporary form
     const handleSubmit = (event) => {
         event.preventDefault();
         onAccept({
             'show':true, 
             'content':
-                <MultiPageForm setWindowState={onAccept}>
-                    <TaxiForm/>
-                    <Authorisation/>
-                    <SuccessWindow/>
-                </MultiPageForm>
+                rideTypes[inputs.ridetype].content                
         });
         console.log(inputs);
     }
@@ -53,18 +97,23 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                     setInputs={setInputs}
                 />
 
-                <RideFormInput
-                    name="pickuplocation"
-                    value={inputs.pickuplocation || ""}
-                    handleChange={handleChange}
-                    placeholder="Pieņemšanas punkts"
-                    setChoosing={setChoosing}
-                    inputs={inputs}
-                    chooseState={chooseState}
-                    setStartMarker={setStartMarker}
-                    setEndMarker={setEndMarker}
-                    setInputs={setInputs}
-                />
+                {
+                    rideTypes[inputs.ridetype].requireStartpoint &&
+                    (
+                        <RideFormInput
+                            name="pickuplocation"
+                            value={inputs.pickuplocation || ""}
+                            handleChange={handleChange}
+                            placeholder="Pieņemšanas punkts"
+                            setChoosing={setChoosing}
+                            inputs={inputs}
+                            chooseState={chooseState}
+                            setStartMarker={setStartMarker}
+                            setEndMarker={setEndMarker}
+                            setInputs={setInputs}
+                        />
+                    )
+                }
                 
                 <RideFormInput
                     name="destination"
