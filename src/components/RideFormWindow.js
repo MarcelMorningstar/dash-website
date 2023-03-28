@@ -84,7 +84,6 @@ function TaxiForm(props){
         {'inputName':'seat_amount'},
         {'inputName':'accept_time'},
         {'inputName':'location_to'},
-        {'inputName':'comments'}
     ];
 
     if(props.extraData.requireStartPoint){
@@ -316,6 +315,25 @@ function EvacuatorForm(props){
 }
 
 function Authorisation(props){
+    const [missingFields, setMissingFields] = useState([]);
+    const [focus, setFocus] = useState("1");
+
+    const requiredFields = [
+        {'inputName':'1'},
+        {'inputName':'2'},
+        {'inputName':'3'},
+        {'inputName':'4'},
+        {'inputName':'5'},
+        {'inputName':'6'},
+    ];
+
+    const inputData = {
+        'missingFields':missingFields,
+        'setInputs':props.setInputs,
+        'setInputsDirect':props.setInputsDirect,
+        'inputs':props.inputs
+    }
+
     return (
         <div>
             <div style={{paddingBottom:20}}>
@@ -325,17 +343,17 @@ function Authorisation(props){
                 <div style={{paddingTop:40, textAlign:'center'}}>
                     <p>Autorizācijas kods tika aizsūtīts uz +371 00000000</p>
                     <div style={{display:'flex', justifyContent:'center', columnGap:5, paddingTop:20}}>
-                        <AuthorisationNumber/>
-                        <AuthorisationNumber/>
-                        <AuthorisationNumber/>
-                        <AuthorisationNumber/>
-                        <AuthorisationNumber/>
-                        <AuthorisationNumber/>
+                        <AuthorisationNumber ename="1" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="2" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="3" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="4" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="5" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="6" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
                     </div>
                 </div>
                 <div style={{display:'flex', justifyContent:'space-between'}}>
                     <InputButton name="Atcelt" click={() => {props.setPage(0)}}/>
-                    <InputButton name="Turpināt" click={() => {props.setPage(2)}}/>
+                    <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 2, props.setPage)}}/>
                 </div>
             </div>
         </div>
@@ -343,9 +361,17 @@ function Authorisation(props){
 }
 
 function AuthorisationNumber(props){
+    const className = exists(props.missingFields, props.ename) ? styles['input-authorisation-missing'] : styles['input-authorisation'];
+
+    const handleChange = (e) => {
+        props.onChange(e);
+
+
+    }
+
     return (
-        <div style={{width:35, height:40, backgroundColor:'rgba(255,255,255,0.5)'}}>
-            <input placeholder="0" style={{width:'100%', height:'100%', backgroundColor:'rgba(255,255,255,0)', border:'none', textAlign:'center'}} type="text"/>
+        <div className={className}>
+            <input name={props.ename} onChange={handleChange} placeholder="0" style={{width:'100%', height:'100%', backgroundColor:'rgba(255,255,255,0)', border:'none', textAlign:'center'}} type="text"/>
         </div>
     )
 }
