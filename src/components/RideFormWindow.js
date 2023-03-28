@@ -366,7 +366,8 @@ function AuthorisationNumber(props){
     const handleChange = (e) => {
         props.onChange(e);
 
-
+        let currentFocus = props.focus;
+        props.setFocus(parseInt(currentFocus));
     }
 
     return (
