@@ -340,15 +340,17 @@ function Authorisation(props){
                 <h2>Autorizācija</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'600px'}}>
-                <div style={{paddingTop:40, textAlign:'center'}}>
-                    <p>Autorizācijas kods tika aizsūtīts uz +371 00000000</p>
-                    <div style={{display:'flex', justifyContent:'center', columnGap:5, paddingTop:20}}>
-                        <AuthorisationNumber ename="0" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="1" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="2" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="3" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="4" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="5" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                <div style={{display:'flex', justifyContent:'center'}}>
+                    <div style={{paddingTop:40, textAlign:'center', width:'90%'}}>
+                        <p>Autorizācijas kods tika aizsūtīts uz +371 00000000</p>
+                        <div style={{display:'flex', justifyContent:'center', columnGap:10, paddingTop:20, width:'100%%'}}>
+                            <AuthorisationNumber ename="0" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                            <AuthorisationNumber ename="1" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                            <AuthorisationNumber ename="2" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                            <AuthorisationNumber ename="3" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                            <AuthorisationNumber ename="4" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                            <AuthorisationNumber ename="5" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        </div>
                     </div>
                 </div>
                 <div style={{display:'flex', justifyContent:'space-between'}}>

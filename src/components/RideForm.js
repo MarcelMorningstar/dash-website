@@ -252,13 +252,12 @@ function RideFormModeSelection(props){
                 flexDirection:'column'
             }}
         >
-            <div style={{
+            <p style={{
                 fontWeight:'light',
-                textAlign:'center',
-                height:'40%'
+                textAlign:'center'
             }}>
                 {props.selection.name}
-            </div>
+            </p>
         </div>
     );
 }
