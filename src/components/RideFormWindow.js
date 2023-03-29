@@ -316,7 +316,7 @@ function EvacuatorForm(props){
 
 function Authorisation(props){
     const [missingFields, setMissingFields] = useState([]);
-    const [focus, setFocus] = useState("1");
+    const [focus, setFocus] = useState("0");
 
     const requiredFields = [
         {'inputName':'0'},
@@ -449,18 +449,38 @@ function SuccessWindow(props){
 function FromToInput(props){
     const [startMarker, setStartMarker] = useState(null);
     const [endMarker, setEndMarker] = useState(null);
+    const [width, setWindowWidth] = useState(0);
 
     const classNameFrom = exists(props.inputData.missingFields, 'location_from') ? styles['input-missing'] : styles['input'];
     const classNameTo = exists(props.inputData.missingFields, 'location_to') ? styles['input-missing'] : styles['input'];
     const onChange = props.inputData.setInputs;
     const setInputs = props.inputData.setInputsDirect;
 
+    var gridStyle = {display:'grid', gridTemplateColumns:'50% 45%', justifyContent:'space-between', paddingBottom:20};
+    var gridStyleTiny = {display:'grid', gridTemplateColumns:'100%', justifyContent:'space-between', paddingBottom:20, rowGap:20};
+
+    if(width < 600)
+        gridStyle = gridStyleTiny;
+
+    useEffect(() => { 
+        updateDimensions();
+   
+        window.addEventListener('resize', updateDimensions);
+        return () => 
+          window.removeEventListener('resize',updateDimensions);
+    }, []);
+    
+    const updateDimensions = () => {
+        const width = window.innerWidth;
+        setWindowWidth(width);
+    }
+
     return (
         <div>
             <div style={{paddingBottom:10}}>
                 Ceļa informācija:
             </div>
-            <div style={{display:'grid', gridTemplateColumns:'45% 45%', justifyContent:'space-between', paddingBottom:20}}>
+            <div style={gridStyle}>
                 <div>
                     {props.requireStartPoint &&
                         (
@@ -515,7 +535,7 @@ function PlacesAutocompleteInput(props){
 
     return (
         <>
-            <input ref={ref} value={props.value} name={props.name} onChange={props.onChange} className={props.className} type="text" />
+            <input ref={ref} placeholder='Matīsa iela 105' value={props.value} name={props.name} onChange={props.onChange} className={props.className} type="text" />
         </>
     );
 }
@@ -611,7 +631,7 @@ function InputSection(props){
     return (
         <div style={{paddingBottom:40}}>
             <div style={{paddingBottom:10}}>{props.name}:</div>
-            <div style={{display:'grid', gridTemplateColumns:'45% 45%', rowGap:15, justifyContent:'space-between',}} className={styles['input-section']}>
+            <div style={{display:'flex', flexDirection:'column', rowGap:10}} className={styles['input-section']}>
                 {props.children}
             </div>
         </div>
