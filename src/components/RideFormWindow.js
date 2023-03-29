@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import Map from "./Map";
 import { usePlacesWidget } from "react-google-autocomplete";
 import {FiCheckCircle, FiArrowDown} from 'react-icons/fi';
@@ -319,12 +319,12 @@ function Authorisation(props){
     const [focus, setFocus] = useState("1");
 
     const requiredFields = [
+        {'inputName':'0'},
         {'inputName':'1'},
         {'inputName':'2'},
         {'inputName':'3'},
         {'inputName':'4'},
         {'inputName':'5'},
-        {'inputName':'6'},
     ];
 
     const inputData = {
@@ -343,12 +343,12 @@ function Authorisation(props){
                 <div style={{paddingTop:40, textAlign:'center'}}>
                     <p>Autorizācijas kods tika aizsūtīts uz +371 00000000</p>
                     <div style={{display:'flex', justifyContent:'center', columnGap:5, paddingTop:20}}>
-                        <AuthorisationNumber ename="1" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="2" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="3" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="4" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="5" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
-                        <AuthorisationNumber ename="6" missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="0" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="1" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="2" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="3" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="4" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
+                        <AuthorisationNumber ename="5" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
                     </div>
                 </div>
                 <div style={{display:'flex', justifyContent:'space-between'}}>
@@ -361,18 +361,65 @@ function Authorisation(props){
 }
 
 function AuthorisationNumber(props){
-    const className = exists(props.missingFields, props.ename) ? styles['input-authorisation-missing'] : styles['input-authorisation'];
+    const className = styles['input-authorisation'];
+    
+    var authLineClass = styles['input-authorisation-line'];
+    var authDotClass = styles['input-authorisation-dot'];
+
+    if(exists(props.missingFields, props.ename))
+        authLineClass = styles['input-authorisation-line-missing'];
+
+    const globalFocus = parseInt(props.focus);
+    const localFocus = parseInt(props.ename);
 
     const handleChange = (e) => {
-        props.onChange(e);
+        if(!isNaN(parseFloat(e.target.value))){
+            if(localFocus < 5){
+                props.setFocus(parseInt(localFocus+1));
+            }
 
-        let currentFocus = props.focus;
-        props.setFocus(parseInt(currentFocus));
+            if(e.target.value.length > 1){
+                e.target.value = e.target.value.slice(1,2);
+            }else{
+                e.target.value = e.target.value.slice(0,1);
+            }
+
+            if(isNaN(parseFloat(e.target.value)))
+                e.target.value = '';
+            
+            props.onChange(e);
+        }
+        else
+        {
+            e.target.value = '';
+            props.onChange(e);
+        }
+    }
+
+    const overrideFocus = () => {
+        props.setFocus(localFocus);
+    }
+
+    const inputfield = useRef(null);
+
+    if(localFocus == globalFocus){
+        if(inputfield.current){
+            inputfield.current.focus();
+        }
+
+        authLineClass = styles['input-authorisation-line-focused'];
+        authDotClass = styles['input-authorisation-dot-focused'];
     }
 
     return (
-        <div className={className}>
-            <input name={props.ename} onChange={handleChange} placeholder="0" style={{width:'100%', height:'100%', backgroundColor:'rgba(255,255,255,0)', border:'none', textAlign:'center'}} type="text"/>
+        <div>
+            <div style={{display:'flex', justifyContent:'center', marginBottom:4}}>
+                <div className={authDotClass} />
+            </div>
+            <div className={className}>
+                <input onFocus={overrideFocus} ref={inputfield} name={props.ename} onChange={handleChange} placeholder="0" style={{width:'100%', height:'100%', backgroundColor:'rgba(255,255,255,0)', border:'none', textAlign:'center'}} type="text"/>
+                <div className={authLineClass} />
+            </div>
         </div>
     )
 }

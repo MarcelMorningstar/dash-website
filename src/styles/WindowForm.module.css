@@ -3,6 +3,8 @@
     height:30px;
     border:none;
 
+    border-radius:5px;
+
     padding-left: 6px;
 
     background-color: rgba(255,255,255,0.7);
@@ -68,4 +70,59 @@
     border: solid;
     border-radius: 2px;
     border-color: darkred;
+}
+
+.input-authorisation-line{
+    width:100%;
+    height:3px;
+
+    margin-top:3px;
+
+    background-color:rgba(0,0,0,0.1);
+}
+
+.input-authorisation-line-focused{
+    width:100%;
+    height:3px;
+
+    margin-top:3px;
+
+    background-color:var(--primary);
+}
+
+.input-authorisation-line-missing{
+    width:100%;
+    height:3px;
+
+    margin-top:3px;
+
+    background-color:darkred;
+}
+
+.input-authorisation-dot{
+    display:flex;
+    justify-content: center;
+    
+    height: 7px;
+    width: 7px;
+
+    border-radius: 50%;
+
+    margin-top:3px;
+
+    background-color:rgba(0,0,0,0.1);
+}
+
+.input-authorisation-dot-focused{
+    display:flex;
+    justify-content: center;
+    
+    height: 7px;
+    width: 7px;
+
+    border-radius: 50%;
+
+    margin-top:3px;
+
+    background-color:var(--primary);
 }
