@@ -124,7 +124,7 @@ nav .nav-btn {
   }
 
   nav.open .nav-menu-btn {
-    display: none;
+     display: none;
   }
 
   nav > div .nav-close-btn {

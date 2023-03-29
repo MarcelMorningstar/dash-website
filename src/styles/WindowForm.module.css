@@ -48,10 +48,10 @@
 }
 
 .input-section{
-    display:'grid';
-    grid-template-columns:'45% 45%';
-    row-gap:15;
-    justify-content:'space-between';
+    display:grid;
+    grid-template-columns:45% 45%;
+    row-gap:15px;
+    justify-content:space-between;
 }
 
 .input-authorisation{

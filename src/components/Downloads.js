@@ -13,6 +13,7 @@ export default function Downloads(){
                 marginTop:50,
                 height:'100%'
             }}>
+                <h1 style={{textAlign:'center', paddingBottom:30}}>Vienmēr tepat - tavā telefonā!</h1>
                 <div className={styles['downloads-wrapper']}>
                     <DownloadsWindow 
                         title="Klients"

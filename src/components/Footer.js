@@ -7,21 +7,13 @@ const Footer = () => {
         <footer>
             <div className="container">
                 <div className="row">
-                    {/* (Column 1) */}
                     <div className="col">
-                        <h3>Services</h3>
+                        <h3>Izvēlne</h3>
                         <ul>
-                            <li><Link href="/" className="link">Taxi</Link></li>
-                            <li><Link href="/"  className="link">Become a driver</Link></li>
-                        </ul>
-                    </div>
-                    {/* (Column 2) */}
-                    <div className="col">
-                        <h3>Company</h3>
-                        <ul>
-                            <li><Link href="/"  className="link">About us</Link></li>
-                            <li><Link href="/"  className="link">Contact us</Link></li>
-                            <li><Link href="/"  className="link">Privacy policy</Link></li>
+                            <li><Link href="/"  className="link">Pakalpojumu izsaukšana</Link></li>
+                            <li><Link href="/"  className="link">Sadarbība</Link></li>
+                            <li><Link href="/"  className="link">Par Mums</Link></li>
+                            <li><Link href="/"  className="link">Privātuma politika</Link></li>
                         </ul>
                     </div>
                 </div>

@@ -27,7 +27,8 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                     <TaxiForm/>
                     <Authorisation/>
                     <SuccessWindow/>
-                </MultiPageForm>
+                </MultiPageForm>,
+            'description':'Taksometrs - izvēlies pieņemšanas punktu, kur tevi sagaidīs taksists un galapunktu, uz kuru tevi ir jāaizved.'
         },
         {
             'name':'secondDriver',
@@ -37,7 +38,8 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                     <SecondDriverForm/>
                     <Authorisation/>
                     <SuccessWindow/>
-                </MultiPageForm>
+                </MultiPageForm>,
+            'description':'Otrais vadītājs - Ir mašīna, bet nevari braukt? Izsauc otro vadītāju. Viņš aizvedīs gan tevi, gan tavu mašīnu uz gala punktu.'
         },
         {
             'name':'courier',
@@ -47,7 +49,8 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                     <CourierForm/>
                     <Authorisation/>
                     <SuccessWindow/>
-                </MultiPageForm>
+                </MultiPageForm>,
+            'description':'Kurjers - ir steidzami nododams pasts? Kurjers to atsūtīs vēlamajai personai.'
         },
         {
             'name':'evacuator',
@@ -57,7 +60,8 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                     <EvacuatorForm/>
                     <Authorisation/>
                     <SuccessWindow/>
-                </MultiPageForm>
+                </MultiPageForm>,
+            'description':'Evakuators - esi ticis auto-nelaimē? Izsauc evakuatoru!'
         }
     ]
 
@@ -136,7 +140,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             </form>
             <br/>
             <p>
-                Uzklikšķiniet uz vienu no laukiem, lai parādītu karti. Ierakstiet laukā pieņemšanas punkts adresi, no kuras jūs vēlaties izbraukt. Laukā galapunkts ierakstiet gala punkta adresi.
+                {rideTypes[inputs.ridetype].description}
             </p>
         </div>
     )

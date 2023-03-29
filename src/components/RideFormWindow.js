@@ -462,8 +462,7 @@ function FromToInput(props){
     var gridStyle = {display:'grid', gridTemplateColumns:'50% 45%', justifyContent:'space-between', paddingBottom:20};
     var gridStyleTiny = {display:'grid', gridTemplateColumns:'100%', justifyContent:'space-between', paddingBottom:20, rowGap:20};
 
-    if(width < 600)
-        gridStyle = gridStyleTiny;
+    gridStyle = gridStyleTiny;
 
     useEffect(() => { 
         if(props.markers[0] !== null)
@@ -491,16 +490,13 @@ function FromToInput(props){
                 Ceļa informācija:
             </div>
             <div style={gridStyle}>
-                <div>
+                <div style={{display:'grid', gridTemplateColumns:'45% 45%', columnGap:20, justifyContent:'space-between'}}>
                     {props.requireStartPoint &&
                         (
                         <>
                             <div>
                                 <p className={styles['input-label']}>No:</p>
                                 <PlacesAutocompleteInput setMarker={setStartMarker} value={props.inputData.inputs['location_from']} name='location_from' onChange={onChange} className={classNameFrom} setInputs={setInputs} />
-                            </div>
-                            <div style={{paddingTop:10, paddingBottom:10}}>
-                                <FiArrowDown />
                             </div>
                         </>
                         )
@@ -635,7 +631,7 @@ function InputSection(props){
     return (
         <div style={{paddingBottom:40}}>
             <div style={{paddingBottom:10}}>{props.name}:</div>
-            <div style={{display:'flex', flexDirection:'column', rowGap:10}} className={styles['input-section']}>
+            <div style={{}} className={styles['input-section']}>
                 {props.children}
             </div>
         </div>
