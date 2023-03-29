@@ -245,14 +245,17 @@ function RideFormModeSelection(props){
                 color: (props.currentSelection == props.selection.id ? 'white' : 'black'),
                 width:'100%',
                 height:'100%',
-                cursor:'pointer'
+                cursor:'pointer',
+                display:'flex',
+                justifyContent:'center',
+                alignContent:'center',
+                flexDirection:'column'
             }}
         >
             <div style={{
-                display:'flex',
-                justifyContent:'center',
-                paddingTop:10,
-                fontWeight:'light'
+                fontWeight:'light',
+                textAlign:'center',
+                height:'40%'
             }}>
                 {props.selection.name}
             </div>

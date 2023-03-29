@@ -8,6 +8,10 @@
     background-color: var(--primary);
 }
 
+.ride-header-content-wrapper{
+    width:520px
+}
+
 .ride-header-content::before {
     content: '';
     position: absolute;
@@ -81,7 +85,12 @@
     }
 
     .ride-header-form {
-        width:450px;
+        font-size: 0.8em;
+        width:min(800px, 90%);
+    }
+
+    .ride-header-content-wrapper{
+        width:90%
     }
 
     .ride-header-content::after{
