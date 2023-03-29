@@ -80,6 +80,10 @@
         padding-top: 30px;
     }
 
+    .ride-header-form {
+        width:450px;
+    }
+
     .ride-header-content::after{
         display: none;
     }

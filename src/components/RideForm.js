@@ -167,7 +167,7 @@ function RideFormInput({name, placeholder, value, handleChange, setChoosing, cho
             style={{
                 display:'grid',
                 
-                gridTemplateColumns: chooseState.currentChoose === name ? '90% auto' : '100%',
+                gridTemplateColumns: chooseState.currentChoose === name ? 'auto 40px' : '100%',
                 gridColumnGap:'5px',
                 gridColumn:'span 2'
             }}

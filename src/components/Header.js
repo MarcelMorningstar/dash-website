@@ -21,7 +21,7 @@ export default function Header(props) {
   return (
     <div className={styles['ride-header-content']}>
       <div style={{display:'flex', justifyContent:'center', alignContent:'center', height:400}}>
-          <div style={{paddingTop:70}}>
+          <div style={{paddingTop:70, width:450}}>
             <h1 style={{paddingBottom:15}}>Pieprasiet braucienu!</h1>
             <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} onAccept={props.onAccept} />
           </div>
