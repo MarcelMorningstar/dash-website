@@ -68,7 +68,8 @@ export default function Downloads(){
                         className={styles['download-window']} 
                         style={{
                                 position:'relative',
-                                backgroundColor:'rgb(240,240,240)'
+                                backgroundColor:'rgb(240,240,240)',
+                                minHeight:300
                             }}>
                         
                         <div>
