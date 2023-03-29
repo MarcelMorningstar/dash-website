@@ -23,7 +23,7 @@ export default function Header(props) {
       <div style={{display:'flex', justifyContent:'center', alignContent:'center', height:430}}>
           <div className={styles['ride-header-content-wrapper']} style={{paddingTop:70}}>
             <h1 style={{paddingBottom:15}}>Pieprasiet braucienu!</h1>
-            <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} onAccept={props.onAccept} />
+            <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} onAccept={props.onAccept} markers={[startMarker, endMarker]} />
           </div>
       </div>
       <div className={styles['ride-header-map-parent']}>

@@ -107,7 +107,7 @@ function TaxiForm(props){
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                 <div>
-                    <FromToInput requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
+                    <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     <InputSection name="Kontaktinformācija">
                         <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData}/>
                         <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
@@ -166,7 +166,7 @@ function SecondDriverForm(props){
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                 <div>
-                    <FromToInput requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
+                    <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     <InputSection name="Kontaktinformācija">
                         <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData}/>
                         <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
@@ -231,7 +231,7 @@ function CourierForm(props){
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                 <div>
-                    <FromToInput requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
+                    <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     <InputSection name="Kontaktinformācija">
                         <InputGeneric placeholder="Jānis Bērziņš" name="Izsūtītāja Vārds, Uzvārds" ename='sendername' inputData={inputData} />
                         <InputGeneric placeholder="+371 12341234" name="Izsūtītāja Telefona numurs" ename='senderphone' inputData={inputData} />
@@ -293,7 +293,7 @@ function EvacuatorForm(props){
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                 <div>
-                    <FromToInput requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
+                    <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     <InputSection name="Kontaktinformācija">
                         <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData} />
                         <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
@@ -466,8 +466,15 @@ function FromToInput(props){
         gridStyle = gridStyleTiny;
 
     useEffect(() => { 
+        if(props.markers[0] !== null)
+            setStartMarker(props.markers[0]);
+
+        if(props.markers[1] !== null)
+            setEndMarker(props.markers[1]);
+        
+
         updateDimensions();
-   
+        
         window.addEventListener('resize', updateDimensions);
         return () => 
           window.removeEventListener('resize',updateDimensions);
@@ -490,7 +497,7 @@ function FromToInput(props){
                         <>
                             <div>
                                 <p className={styles['input-label']}>No:</p>
-                                <PlacesAutocompleteInput value={props.inputData.inputs['location_from']} name='location_from' onChange={onChange} className={classNameFrom} setInputs={setInputs} />
+                                <PlacesAutocompleteInput setMarker={setStartMarker} value={props.inputData.inputs['location_from']} name='location_from' onChange={onChange} className={classNameFrom} setInputs={setInputs} />
                             </div>
                             <div style={{paddingTop:10, paddingBottom:10}}>
                                 <FiArrowDown />
@@ -500,7 +507,7 @@ function FromToInput(props){
                     }
                     <div>
                         <p className={styles['input-label']}>Uz:</p>
-                        <PlacesAutocompleteInput value={props.inputData.inputs['location_to']} name='location_to' onChange={onChange} className={classNameTo} setInputs={setInputs} />
+                        <PlacesAutocompleteInput setMarker={setEndMarker} value={props.inputData.inputs['location_to']} name='location_to' onChange={onChange} className={classNameTo} setInputs={setInputs} />
                     </div>
                 </div>
                 <div style={{width:'100%', height:250, border:'solid'}}>
@@ -521,13 +528,7 @@ function PlacesAutocompleteInput(props){
         apiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
         onPlaceSelected: (place) => {
             props.setInputs(values => ({...values, [props.name]: place.formatted_address}));
-            /*
-            if(name === "pickuplocation"){
-                setStartMarker({'lat':place.geometry.location.lat(), 'lng':place.geometry.location.lng()});
-            }else{
-                setEndMarker({'lat':place.geometry.location.lat(), 'lng':place.geometry.location.lng()});
-            }
-            */
+            props.setMarker({'lat':place.geometry.location.lat(), 'lng':place.geometry.location.lng()});
         },
         options:{
             types:['address'],

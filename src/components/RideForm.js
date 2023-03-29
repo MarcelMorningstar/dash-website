@@ -5,7 +5,7 @@ import { TaxiForm, Authorisation, SuccessWindow, MultiPageForm, SecondDriverForm
 
 import styles from "../styles/Header.module.css";
 
-function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAccept}){
+function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAccept, markers}){
     const [inputs, setInputs] = useState({
         'ridetype':0,
         'pickuplocation':'',
@@ -23,7 +23,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'taxi',
             'requireStartpoint':true,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs, 'markers':markers}}>
                     <TaxiForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -33,7 +33,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'secondDriver',
             'requireStartpoint':true,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs, 'markers':markers}}>
                     <SecondDriverForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -43,7 +43,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'courier',
             'requireStartpoint':true,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs, 'markers':markers}}>
                     <CourierForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -53,7 +53,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
             'name':'evacuator',
             'requireStartpoint':false,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':false, 'inputs':inputs}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':false, 'inputs':inputs, 'markers':markers}}>
                     <EvacuatorForm/>
                     <Authorisation/>
                     <SuccessWindow/>
@@ -147,13 +147,13 @@ function RideFormInput({name, placeholder, value, handleChange, setChoosing, cho
         apiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
         onPlaceSelected: (place) => {
             setInputs(values => ({...values, [name]: place.formatted_address}));
-            /*
+            
             if(name === "pickuplocation"){
                 setStartMarker({'lat':place.geometry.location.lat(), 'lng':place.geometry.location.lng()});
             }else{
                 setEndMarker({'lat':place.geometry.location.lat(), 'lng':place.geometry.location.lng()});
             }
-            */
+            
         },
         options:{
             types:['address'],

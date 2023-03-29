@@ -13,14 +13,7 @@ export default function Downloads(){
                 marginTop:50,
                 height:'100%'
             }}>
-                <div 
-                    style={{
-                        display:'flex',
-                        gap:10,
-                        justifyContent:'space-evenly',
-                        width:'100%',
-                        height:'80%'
-                }}>
+                <div className={styles['downloads-wrapper']}>
                     <DownloadsWindow 
                         title="Klients"
                         animProps={{
@@ -75,7 +68,6 @@ export default function Downloads(){
                         className={styles['download-window']} 
                         style={{
                                 position:'relative',
-                                width:'max(300px, 25%)',
                                 backgroundColor:'rgb(240,240,240)'
                             }}>
                         
@@ -96,8 +88,7 @@ function DownloadsWindow(props){
             whileInView={props.animProps['whileInView']}
             transition={props.animProps['transition']}
             style={{
-                width:'max(300px, 25%)',
-                backgroundColor:'rgb(240,240,240)'
+                
             }}
         >
             <div style={{
