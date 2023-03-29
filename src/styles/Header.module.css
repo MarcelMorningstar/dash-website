@@ -86,7 +86,7 @@
 
     .ride-header-form {
         font-size: 0.8em;
-        width:min(800px, 90%);
+        width:100%;
     }
 
     .ride-header-content-wrapper{

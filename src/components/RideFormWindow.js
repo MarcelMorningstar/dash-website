@@ -32,6 +32,7 @@ const validateInput = (requiredFields, setMissingFields, curInputs, page, setPag
     if(currentlyMissingFields.length > 0){
         setMissingFields(currentlyMissingFields);
     }else{
+        window.scrollTo(0, 0);
         setPage(page);
     }
 }
@@ -47,6 +48,8 @@ function MultiPageForm(props){
     useEffect(()=>{
         setInputs(values => ({...values, ['location_from']: props.extraData.inputs['pickuplocation']}));
         setInputs(values => ({...values, ['location_to']: props.extraData.inputs['destination']}));
+
+        window.scrollTo(0, 0);
     }, []);
 
     const handleChange = (event) => {
