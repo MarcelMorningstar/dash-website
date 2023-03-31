@@ -10,7 +10,10 @@ const checkRequiredInputs = (requirements, curInputs) => {
     let missingFields = [];
     
     requirements.map((requirement) => {
-        if(curInputs[requirement.inputName] === undefined || curInputs[requirement.inputName] == ''){
+        let patternCheck = (requirement.pattern !== undefined && curInputs[requirement.inputName] !== requirement.pattern);
+        console.log(patternCheck);
+        
+        if(curInputs[requirement.inputName] === undefined || curInputs[requirement.inputName] == '' || patternCheck){
             missingFields.push(requirement.inputName);
         }
     });
@@ -87,6 +90,7 @@ function TaxiForm(props){
         {'inputName':'seat_amount'},
         {'inputName':'accept_time'},
         {'inputName':'location_to'},
+        {'inputName':'conf_rules', 'pattern':"false"},
     ];
 
     if(props.extraData.requireStartPoint){
@@ -143,8 +147,8 @@ function SecondDriverForm(props){
         {'inputName':'autonumber'},
         {'inputName':'technicalchecktime'},
         {'inputName':'taketime'},
-        {'inputName':'conf_driverrules'},
-        {'inputName':'conf_rules'},
+        {'inputName':'conf_driverrules', 'pattern':"false"},
+        {'inputName':'conf_rules', 'pattern':"false"},
         {'inputName':'location_to'}
     ];
 
@@ -208,8 +212,8 @@ function CourierForm(props){
         {'inputName':'packagescale'},
         {'inputName':'taketime'},
         {'inputName':'providetime'},
-        {'inputName':'conf_mailrules'},
-        {'inputName':'conf_rules'},
+        {'inputName':'conf_mailrules', 'pattern':"false"},
+        {'inputName':'conf_rules', 'pattern':"false"},
         {'inputName':'location_to'},
     ];
 
@@ -271,7 +275,7 @@ function EvacuatorForm(props){
         {'inputName':'number'},
         {'inputName':'autotype'},
         {'inputName':'misc'},
-        {'inputName':'conf_rules'},
+        {'inputName':'conf_rules', 'pattern':"false"},
         {'inputName':'location_to'},
     ];
 
@@ -639,13 +643,25 @@ function InputSection(props){
 }
 
 function InputConfirmation(props){
+    const [checked, setChecked] = useState(false);
+    
     const onChange = props.inputData.setInputs;
     const value = props.inputData.inputs[props.ename];
 
+    const required = exists(props.inputData.missingFields, props.ename);
+    const borderstyle = required ? styles['input-missing'] : '';
+
+    const _onChange = (e) => {
+        setChecked(!checked);
+        
+        e.target.value = checked;
+        onChange(e);
+    }
+
     return (
-        <div style={{display:'flex', justifyContent:'space-between'}}>
+        <div className={borderstyle} style={{display:'flex', justifyContent:'space-between', backgroundColor:'rgba(0,0,0,0)'}}>
             <div>{props.children}</div>
-            <div><input name={props.ename} onChange={onChange} type="checkbox" /></div>
+            <div><input name={props.ename} onChange={_onChange} type="checkbox" /></div>
         </div>
     )
 }

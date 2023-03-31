@@ -10,8 +10,8 @@ import towTruck from '../imgs/tow.jpg';
 export default function Services(){
     return(
         <div>
-            <div style={{paddingTop:40}}>
-                <h1 style={{textAlign:'center', paddingBottom:30}}>Atvedīsim tevi un ne tikai!</h1>
+            <div style={{marginTop:80, paddingTop:80, backgroundColor:'rgba(0,0,0,0.03)'}}>
+                <h1 style={{paddingLeft:5, paddingRight:5, textAlign:'center', paddingBottom:30}}>Atvedīsim tevi un ne tikai!</h1>
                 <ServiceDescription offsets='30% 0%' background={taxiDriver} flexDirection='row'>
                     <h1>Taksometrs</h1>
                     <p>Ir vēlme, lai kāds tevi kaut kur aizved? Izvēlies savu galapunktu un izsauc taksi uz savu esošo atrašanās vietu ar dažiem pirkstu skārieniem!</p>

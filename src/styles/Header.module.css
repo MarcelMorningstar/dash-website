@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 50% 50%;
     width: 100%;
-    height: 500px;
+    height: 550px;
     background-color: var(--primary);
 }
 
@@ -18,7 +18,7 @@
     left: 0;
     bottom: 0;
     width: 120px;
-    height: 60%;
+    height: 70%;
     background-color: var(--secondary);
     transform: rotate(-16deg) translateX(-100px);
 }
@@ -27,7 +27,7 @@
     content: '';
     position: absolute;
     right: 0;
-    width: 120px;
+    width: 100px;
     height: 70%;
     background-color: var(--secondary);
     transform: rotate(-18deg) translateX(80px);
@@ -54,13 +54,12 @@
     height: 40px;
     font-weight: bold;
     font-size: large;
-    color: #FFFFFF;
-    background-color: #292B2D;
+    background-color: var(--primary);
     border: none;
 }
 
 .ride-header-form input[type=submit]:hover {
-    background-color: #454a4e;
+    background-color: #cf9414;
     cursor: pointer;
 }
 

@@ -9,7 +9,7 @@ import styles from '../styles/Footer.module.css';
 const Footer = () => {
     return (
         <div className={styles['footer-wrapper']}>
-            <div style={{paddingTop:70}}>
+            <div style={{paddingTop:20}}>
                 <div className={styles['footer-content']}>
                     <div style={{display:'flex', placeContent:'center', flexWrap:'wrap'}}><Image width={100} alt="DASH logo" src={dashIcon} /></div>
                     <div className={styles['footer-hrefs']}>

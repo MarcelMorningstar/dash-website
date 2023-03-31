@@ -3,9 +3,8 @@ import Image from 'next/image';
 import RideForm from './RideForm'
 import Map from './Map';
 
-import AppStoreWidget from '../imgs/appstore.png';
-import PlayStoreWidget from '../imgs/playstore.png';
-import headerImage from '../imgs/header-bg.png';
+import dashIcon from '../imgs/icon.png';
+import background from '../imgs/headerbackground.png';
 
 import styles from "../styles/Header.module.css";
 
@@ -19,10 +18,11 @@ export default function Header(props) {
   const [endMarker, setEndMarker] = useState(null);
 
   return (
-    <div className={styles['ride-header-content']}>
-      <div style={{display:'flex', justifyContent:'center', alignContent:'center', height:430}}>
+    <div className={styles['ride-header-content']} style={{backgroundImage:`url(${background.src})`, backgroundSize:'cover'}}>
+      <div style={{display:'flex', justifyContent:'center', alignContent:'center', height:430, paddingTop:60}}>
+          <Image style={{position:'absolute', top:30, left:20}} width={70} alt="DASH logo" src={dashIcon} />
           <div className={styles['ride-header-content-wrapper']} style={{paddingTop:70}}>
-            <h1 style={{paddingBottom:15}}>Pieprasiet braucienu!</h1>
+            <h1 style={{paddingBottom:15, color:'white'}}>Pieprasiet braucienu!</h1>
             <RideForm setChoosing={setIsChoosing} chooseState={isChoosing} setStartMarker={setStartMarker} setEndMarker={setEndMarker} onAccept={props.onAccept} markers={[startMarker, endMarker]} />
           </div>
       </div>

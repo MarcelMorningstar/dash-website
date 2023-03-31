@@ -10,7 +10,8 @@ export default function Downloads(){
             height:'min(40%,1000px)'
         }}>
             <div style={{
-                marginTop:50,
+                marginTop:100,
+                marginBottom:100,
                 height:'100%'
             }}>
                 <h1 style={{textAlign:'center', paddingBottom:30}}>Vienmēr tepat - tavā telefonā!</h1>

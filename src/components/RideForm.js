@@ -139,7 +139,7 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
                 />
             </form>
             <br/>
-            <p>
+            <p style={{color:'white'}}>
                 {rideTypes[inputs.ridetype].description}
             </p>
         </div>
