@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Downloads from '../components/Downloads';
 import Window from '@/components/Window';
 import Services from '@/components/Services';
+import NavWidgets from '@/components/NavWidgets';
 import React, { useState } from 'react';
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <Header onAccept={changeWindowContent} />
       <Downloads />
       <Services />
+      <NavWidgets />
     </div>
   )
 }
