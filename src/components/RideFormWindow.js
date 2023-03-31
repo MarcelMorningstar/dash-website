@@ -659,7 +659,7 @@ function InputConfirmation(props){
     }
 
     return (
-        <div className={borderstyle} style={{display:'flex', justifyContent:'space-between', backgroundColor:'rgba(0,0,0,0)'}}>
+        <div className={borderstyle} style={{display:'flex', justifyContent:'space-between', backgroundColor:'rgba(0,0,0,0)', height:'fit-content'}}>
             <div>{props.children}</div>
             <div><input name={props.ename} onChange={_onChange} type="checkbox" /></div>
         </div>

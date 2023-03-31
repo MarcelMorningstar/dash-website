@@ -22,6 +22,17 @@
     color:var(--primary)
 }
 
+.footer-call{
+    background-color:#F5AD17;
+    color:#292B2D;
+    padding:3px;
+}
+
+.footer-href{
+    height:fit-content;
+    padding:3px;
+}
+
 @media (max-width: 600px) {
     .footer-wrapper{
         height: auto;

@@ -18,7 +18,7 @@ export default function Header(props) {
   const [endMarker, setEndMarker] = useState(null);
 
   return (
-    <div className={styles['ride-header-content']} style={{backgroundImage:`url(${background.src})`, backgroundSize:'cover'}}>
+    <div className={styles['ride-header-content']} style={{backgroundImage:`url(${background.src})`, backgroundSize:'cover', backgroundPosition:'10% 80%'}}>
       <div style={{display:'flex', justifyContent:'center', alignContent:'center', height:430, paddingTop:60}}>
           <Image style={{position:'absolute', top:30, left:20}} width={70} alt="DASH logo" src={dashIcon} />
           <div className={styles['ride-header-content-wrapper']} style={{paddingTop:70}}>
