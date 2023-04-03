@@ -26,11 +26,39 @@
     background-color:#F5AD17;
     color:#292B2D;
     padding:3px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+}
+
+.footer-call:hover{
+    background-color: #292B2D;
+    color:#F5AD17;
+    padding:0px;
+
+    border:solid;
+    border-radius: 1px;
+    border-color:var(--primary);
 }
 
 .footer-href{
     height:fit-content;
     padding:3px;
+
+    cursor: pointer;
+
+    color:var(--primary);
+
+    text-decoration: none;
+}
+
+.footer-href:hover{
+    height:fit-content;
+    padding:3px;
+
+    background-color:#F5AD17;
+    color:#292B2D;
 }
 
 @media (max-width: 600px) {

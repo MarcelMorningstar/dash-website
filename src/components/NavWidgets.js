@@ -1,5 +1,8 @@
 import React from "react";
+import Link from "next/link";
 import { FaBusinessTime, FaInfo, FaPhoneAlt } from "react-icons/fa";
+
+import styles from "../styles/NavWidgets.module.css";
 
 
 function NavWidgets(props){
@@ -9,19 +12,19 @@ function NavWidgets(props){
             color:'white'
         }}>
             <div style={{display:'flex', flexWrap:'wrap', justifyContent:'center', padding:20, rowGap:60, columnGap:50, marginLeft:'10vw', marginRight:'10vw'}}>
-                <NavWidget title='Sadarbība' 
+                <NavWidget title='Sadarbība' address="/business"
                     icon={<FaBusinessTime color="#9A6F14" style={{paddingLeft:3, paddingTop:4}} size={30}/>} 
                     hyperlink={<p>Apskaties sadarbību lapu.</p>}
                 >
                     Mēs esam gatavi sadarboties ar uzņēmumiem mūsu darba sfērā - ātri un operatīvi!
                 </NavWidget>
-                <NavWidget title='Info' 
+                <NavWidget title='Info' address="/info"
                     icon={<FaInfo color="#9A6F14" style={{paddingLeft:1, paddingTop:5}} size={25}/>} 
                     hyperlink={<p>Apskaties lapu Par Mums.</p>}
                 >
                     Ieskaties, intereses pēc, informāciju par mums un mūsu uzņēmumu!
                 </NavWidget>
-                <NavWidget title='Kontakti' 
+                <NavWidget title='Kontakti' address="/contact"
                     icon={<FaPhoneAlt color="#9A6F14" style={{paddingTop:6}} size={25}/>}
                     hyperlink={<p>Apskaties kontaktu lapu.</p>}
                 >
@@ -51,7 +54,7 @@ function NavWidget(props){
                 {props.children}
             </div>
             <div style={{paddingTop:20, color:'#F5AD17'}}>
-                {props.hyperlink}
+                <Link className={styles['link']} href={props.address}>{props.hyperlink}</Link>
             </div>
         </div>
     )
