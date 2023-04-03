@@ -26,7 +26,7 @@ export default function Services(){
                 </ServiceDescription>
                 <ServiceDescription offsets='25% 50%' background={towTruck} flexDirection='row-reverse'>
                     <h1>Evakuators</h1>
-                    <p>Esi ticis nelaimē? Izsauc evakuatoru tagad vai uz citu laiku!</p>
+                    <p>Ir iespēja pārvadāt bojātu autotransportu uz Tev nepieciešamu vietu.</p>
                 </ServiceDescription>
             </div>
         </div>

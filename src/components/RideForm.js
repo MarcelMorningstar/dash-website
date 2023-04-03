@@ -54,14 +54,14 @@ function RideForm({setChoosing, chooseState, setStartMarker, setEndMarker, onAcc
         },
         {
             'name':'evacuator',
-            'requireStartpoint':false,
+            'requireStartpoint':true,
             'content':
-                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':false, 'inputs':inputs, 'markers':markers}}>
+                <MultiPageForm setWindowState={onAccept} extraData={{'requireStartPoint':true, 'inputs':inputs, 'markers':markers}}>
                     <EvacuatorForm/>
                     <Authorisation/>
                     <SuccessWindow/>
                 </MultiPageForm>,
-            'description':'Evakuators - esi ticis auto-nelaimē? Izsauc evakuatoru!'
+            'description':'Vai ir nepieciešams pārvest bojātu auto-transportu? Izsauc evakuatoru!'
         }
     ]
 
