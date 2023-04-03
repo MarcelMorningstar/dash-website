@@ -17,7 +17,7 @@ function NavWidgets(props){
                 </NavWidget>
                 <NavWidget title='Info' 
                     icon={<FaInfo color="#9A6F14" style={{paddingLeft:1, paddingTop:5}} size={25}/>} 
-                    hyperlink={<p>Apskaties lapu 'Par Mums'.</p>}
+                    hyperlink={<p>Apskaties lapu Par Mums.</p>}
                 >
                     Ieskaties, intereses pēc, informāciju par mums un mūsu uzņēmumu!
                 </NavWidget>

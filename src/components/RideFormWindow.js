@@ -443,7 +443,7 @@ function SuccessWindow(props){
                 <div style={{paddingTop:40, textAlign:'center'}}>
                     <div><FiCheckCircle style={{color:'green', height:80, width:'auto'}} /></div>
                     <div>Jūsu izsaukums tika apstiprināts!</div>
-                    <div>Turpmāk mēs ar Jums sazināsimies caur Jūsu telefona numuru +371 00000000</div>
+                    <div>Turpmāk mēs ar Jums sazināsimies caur Jūsu telefona numuru {props.inputs.number}</div>
                 </div>
                 <div style={{display:'flex', justifyContent:'flex-end'}}>
                     <InputButton name="Pabeigt" click={() => {props.setWindowState({'show':false})}}/>
