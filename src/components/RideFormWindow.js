@@ -349,7 +349,7 @@ function Authorisation(props){
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height:'600px'}}>
                 <div style={{display:'flex', justifyContent:'center'}}>
                     <div style={{paddingTop:40, textAlign:'center', width:'90%'}}>
-                        <p>Autorizācijas kods tika aizsūtīts uz +371 00000000</p>
+                        <p>Autorizācijas kods tika aizsūtīts uz {props.inputs.number}</p>
                         <div style={{display:'flex', justifyContent:'center', columnGap:10, paddingTop:20, width:'100%%'}}>
                             <AuthorisationNumber ename="0" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
                             <AuthorisationNumber ename="1" focus={focus} setFocus={setFocus} missingFields={inputData.missingFields} onChange={inputData.setInputs}/>
