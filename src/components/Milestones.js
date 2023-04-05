@@ -5,7 +5,7 @@ import {FaPhoneAlt, FaUserFriends, FaChalkboardTeacher, FaCarAlt} from 'react-ic
 export default function Milestones(props){
     return(
         <div style={{minHeight:400, maxHeight:'fit-content'}}>
-            <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexWrap:'wrap', gap:100, minHeight:400, paddingTop:30, paddingBottom:30 }}>
+            <div style={{display:'flex', justifyContent:'center', alignContent:'center', flexWrap:'wrap', gap:100, minHeight:400, paddingTop:30, paddingBottom:50 }}>
                 <MilestoneStep
                     icon={<FaPhoneAlt/>}
                     name="Kontaktējies"
@@ -34,7 +34,7 @@ export default function Milestones(props){
 function MilestoneStep(props){
     return(
         <div style={{width:200, textAlign:'center'}}>
-            <div style={{fontSize:'2.5em'}}>
+            <div style={{fontSize:'4.5em'}}>
                 {props.icon}
             </div>
             <div style={{fontSize:'1.5em'}}>
