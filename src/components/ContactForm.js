@@ -4,7 +4,7 @@ import styles from '../styles/ContactForm.module.css';
 
 export default function ContactForm(props){
     return(
-        <div style={{backgroundColor:'rgb(0,0,0,0.2)', display:'flex', placeContent:'center', paddingTop:50, paddingBottom:50}}>
+        <div style={{backgroundColor:'rgb(0,0,0,0.1)', display:'flex', placeContent:'center', paddingTop:50, paddingBottom:50}}>
             <form className={styles['form-wrapper']}>
                 <div>
                     <div className={styles['form-label']}>Vārds, uzvārds:</div>
@@ -19,6 +19,14 @@ export default function ContactForm(props){
                 <div>
                     <div className={styles['form-label']}>Ē-pasts:</div>
                     <input type="email" placeholder="vārds.uzvārds@domēns.lv" className={styles['form-input']} name="email" required/>
+                </div>
+
+                <div>
+                    <div className={styles['form-label']}>Vēstules veids:</div>
+                    <select className={styles['form-input']} name="messagetype">
+                        <option>Jautājums</option>
+                        <option>Sadarbība</option>
+                    </select>
                 </div>
                 
                 <div>
