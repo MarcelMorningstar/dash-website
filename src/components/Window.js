@@ -1,4 +1,5 @@
 import React from "react";
+import {FiX} from 'react-icons/fi';
 
 import styles from '../styles/Window.module.css'
 
@@ -9,7 +10,7 @@ export default function Window(props){
                 <div className={styles['window-dragbar']}>
                     <div className={styles['window-close']} onClick={()=>{props.changeContent({'show':false})}}>
                         <div className={styles['window-close-icon']}>
-                            X
+                            <FiX/>
                         </div>
                     </div>
                 </div>

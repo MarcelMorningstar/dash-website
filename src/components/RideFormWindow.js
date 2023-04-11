@@ -110,27 +110,33 @@ function TaxiForm(props){
                 <h2>Taksometra izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div>
-                    <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
-                    <InputSection name="Kontaktinformācija">
-                        <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData}/>
-                        <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
-                    </InputSection>
-                    <InputSection name="Brauciena informācija">
-                        <InputNumber placeholder="0" name="Sēdvietu skaits" ename='seat_amount' inputData={inputData} />
-                        <InputDateTime name="Pieņemšanas laiks" ename='accept_time' inputData={inputData} />
-                        <InputCheckmark name="Bērnu sēdeklītis" ename='child_seat' inputData={inputData} />
-                        <InputTextarea name="Papildus komentāri" ename='comments' inputData={inputData} />
-                    </InputSection>
-                    <div style={{paddingBottom:30}}>
-                        <InputConfirmation ename="conf_rules" inputData={inputData}>
-                            Es piekrītu lietošanas noteikumiem.
-                        </InputConfirmation>
+                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
+                    <div>
+                        <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
+                    </div>
+                    <div>
+                        <InputSection name="Kontaktinformācija">
+                            <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData}/>
+                            <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
+                        </InputSection>
+                        <InputSection name="Brauciena informācija">
+                            <InputNumber placeholder="0" name="Sēdvietu skaits" ename='seat_amount' inputData={inputData} />
+                            <InputDateTime name="Pieņemšanas laiks" ename='accept_time' inputData={inputData} />
+                            <InputCheckmark name="Bērnu sēdeklītis" ename='child_seat' inputData={inputData} />
+                            <InputTextarea name="Papildus komentāri" ename='comments' inputData={inputData} />
+                        </InputSection>
+                        <div style={{paddingBottom:30}}>
+                            <InputConfirmation ename="conf_rules" inputData={inputData}>
+                                Es piekrītu lietošanas noteikumiem.
+                            </InputConfirmation>
+                        </div>
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
-                    <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
-                    <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 1, props.setPage)}}/>
+                <div style={{position:'relative'}}>
+                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', position:'absolute', bottom:'-35px', width:'100%'}}>
+                        <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
+                        <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 1, props.setPage)}}/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -169,30 +175,34 @@ function SecondDriverForm(props){
                 <h2>Otrā vadītāja izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div>
+                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
                     <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
-                    <InputSection name="Kontaktinformācija">
-                        <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData}/>
-                        <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
-                    </InputSection>
-                    <InputSection name="Brauciena informācija">
-                        <InputGeneric placeholder="BMW x5" name="Autotransporta modelis" ename='automodel' inputData={inputData} />
-                        <InputGeneric placeholder="KJ-1234" name="Autotransporta numurs" ename='autonumber' inputData={inputData} />
-                        <InputDateTime name="Tehniskās apskates iziešanas datums" ename='technicalchecktime' inputData={inputData} />
-                        <InputDateTime name="Pieņemšanas laiks" ename='taketime' inputData={inputData} />
-                    </InputSection>
-                    <div style={{paddingBottom:30}}>
-                        <InputConfirmation ename='conf_driverrules' inputData={inputData}>
-                            Apstiprinu, ka mans autotransporta līdzeklis pakļaujas Otrā Vadītāja izsaukšanas noteikumiem.
-                        </InputConfirmation>
-                        <InputConfirmation ename='conf_rules' inputData={inputData}>
-                            Es piekrītu lietošanas noteikumiem.
-                        </InputConfirmation>
+                    <div>
+                        <InputSection name="Kontaktinformācija">
+                            <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData}/>
+                            <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
+                        </InputSection>
+                        <InputSection name="Brauciena informācija">
+                            <InputGeneric placeholder="BMW x5" name="Autotransporta modelis" ename='automodel' inputData={inputData} />
+                            <InputGeneric placeholder="KJ-1234" name="Autotransporta numurs" ename='autonumber' inputData={inputData} />
+                            <InputDateTime name="Tehniskās apskates iziešanas datums" ename='technicalchecktime' inputData={inputData} />
+                            <InputDateTime name="Pieņemšanas laiks" ename='taketime' inputData={inputData} />
+                        </InputSection>
+                        <div style={{paddingBottom:30}}>
+                            <InputConfirmation ename='conf_driverrules' inputData={inputData}>
+                                Apstiprinu, ka mans autotransporta līdzeklis pakļaujas Otrā Vadītāja izsaukšanas noteikumiem.
+                            </InputConfirmation>
+                            <InputConfirmation ename='conf_rules' inputData={inputData}>
+                                Es piekrītu lietošanas noteikumiem.
+                            </InputConfirmation>
+                        </div>
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
-                    <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
-                    <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 1, props.setPage)}}/>
+                <div style={{position:'relative'}}>
+                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', position:'absolute', bottom:'-35px', width:'100%'}}>
+                        <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
+                        <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 1, props.setPage)}}/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -234,33 +244,37 @@ function CourierForm(props){
                 <h2>Kurjera izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div>
+                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
                     <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
-                    <InputSection name="Kontaktinformācija">
-                        <InputGeneric placeholder="Jānis Bērziņš" name="Izsūtītāja Vārds, Uzvārds" ename='sendername' inputData={inputData} />
-                        <InputGeneric placeholder="+371 12341234" name="Izsūtītāja Telefona numurs" ename='senderphone' inputData={inputData} />
-                        <InputGeneric placeholder="Jānis Bērziņš" name="Saņēmēja Vārds, Uzvārds" ename='receivername' inputData={inputData} />
-                        <InputGeneric placeholder="+371 12341234" name="Saņēmēja Telefona numurs" ename='receiverphone' inputData={inputData} />
-                    </InputSection>
-                    <InputSection name="Pasta informācija">
-                        <InputGeneric placeholder="Dokuments, ēdiens" name="Pasta saturs" ename='packageitems' inputData={inputData} />
-                        <InputNumber  placeholder="1"  name="Pasta svars (kg)" ename='packagemass' inputData={inputData} />
-                        <InputGeneric placeholder="0.25, 0.31, 0.26"  name="Pasta izmērs (x, y, z) (m)" ename='packagescale' inputData={inputData} />
-                        <InputDateTime name="Vēlamais saņemšanas datums un laiks" ename='taketime' inputData={inputData} />
-                        <InputDateTime name="Vēlamais piegādes datums un laiks" ename='providetime' inputData={inputData} />
-                    </InputSection>
-                    <div style={{paddingBottom:30}}>
-                        <InputConfirmation ename='conf_mailrules' inputData={inputData}>
-                            Apstiprinu, ka mans pasts pakļaujas Kurjera izsaukšanas noteikumiem.
-                        </InputConfirmation>
-                        <InputConfirmation ename='conf_rules' inputData={inputData}>
-                            Es piekrītu lietošanas noteikumiem.
-                        </InputConfirmation>
+                    <div>
+                        <InputSection name="Kontaktinformācija">
+                            <InputGeneric placeholder="Jānis Bērziņš" name="Izsūtītāja Vārds, Uzvārds" ename='sendername' inputData={inputData} />
+                            <InputGeneric placeholder="+371 12341234" name="Izsūtītāja Telefona numurs" ename='senderphone' inputData={inputData} />
+                            <InputGeneric placeholder="Jānis Bērziņš" name="Saņēmēja Vārds, Uzvārds" ename='receivername' inputData={inputData} />
+                            <InputGeneric placeholder="+371 12341234" name="Saņēmēja Telefona numurs" ename='receiverphone' inputData={inputData} />
+                        </InputSection>
+                        <InputSection name="Pasta informācija">
+                            <InputGeneric placeholder="Dokuments, ēdiens" name="Pasta saturs" ename='packageitems' inputData={inputData} />
+                            <InputNumber  placeholder="1"  name="Pasta svars (kg)" ename='packagemass' inputData={inputData} />
+                            <InputGeneric placeholder="0.25, 0.31, 0.26"  name="Pasta izmērs (x, y, z) (m)" ename='packagescale' inputData={inputData} />
+                            <InputDateTime name="Vēlamais saņemšanas datums un laiks" ename='taketime' inputData={inputData} />
+                            <InputDateTime name="Vēlamais piegādes datums un laiks" ename='providetime' inputData={inputData} />
+                        </InputSection>
+                        <div style={{paddingBottom:30}}>
+                            <InputConfirmation ename='conf_mailrules' inputData={inputData}>
+                                Apstiprinu, ka mans pasts pakļaujas Kurjera izsaukšanas noteikumiem.
+                            </InputConfirmation>
+                            <InputConfirmation ename='conf_rules' inputData={inputData}>
+                                Es piekrītu lietošanas noteikumiem.
+                            </InputConfirmation>
+                        </div>
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
+                <div style={{position:'relative'}}>
+                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', position:'absolute', bottom:'-35px', width:'100%'}}>
                     <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
                     <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 1, props.setPage)}}/>
+                </div>
                 </div>
             </div>
         </div>
@@ -296,25 +310,29 @@ function EvacuatorForm(props){
                 <h2>Evakuatora izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div>
+                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
                     <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
-                    <InputSection name="Kontaktinformācija">
-                        <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData} />
-                        <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
-                    </InputSection>
-                    <InputSection name="Negadījuma informācija">
-                        <InputGeneric placeholder="Viegla automašīna" name="Autotransporta tips" ename='autotype' inputData={inputData}/>
-                        <InputTextarea name="Aprakstiet situāciju" ename='misc' inputData={inputData}/>
-                    </InputSection>
-                    <div style={{paddingBottom:30}}>
-                        <InputConfirmation ename='conf_rules' inputData={inputData}>
-                            Es piekrītu lietošanas noteikumiem.
-                        </InputConfirmation>
+                    <div>
+                        <InputSection name="Kontaktinformācija">
+                            <InputGeneric placeholder="Jānis Bērziņš" name="Vārds, Uzvārds" ename='name' inputData={inputData} />
+                            <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
+                        </InputSection>
+                        <InputSection name="Negadījuma informācija">
+                            <InputGeneric placeholder="Viegla automašīna" name="Autotransporta tips" ename='autotype' inputData={inputData}/>
+                            <InputTextarea name="Aprakstiet situāciju" ename='misc' inputData={inputData}/>
+                        </InputSection>
+                        <div style={{paddingBottom:30}}>
+                            <InputConfirmation ename='conf_rules' inputData={inputData}>
+                                Es piekrītu lietošanas noteikumiem.
+                            </InputConfirmation>
+                        </div>
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
+                <div style={{position:'relative'}}>
+                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', position:'absolute', bottom:'-35px', width:'100%'}}>
                     <InputButton name="Atcelt" click={() => {props.setWindowState({'show':false})}}/>
                     <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 1, props.setPage)}}/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -489,7 +507,7 @@ function FromToInput(props){
     }
 
     return (
-        <div>
+        <div style={{height:'100%'}}>
             <div style={{paddingBottom:10}}>
                 Ceļa informācija:
             </div>
@@ -510,7 +528,7 @@ function FromToInput(props){
                         <PlacesAutocompleteInput setMarker={setEndMarker} value={props.inputData.inputs['location_to']} name='location_to' onChange={onChange} className={classNameTo} setInputs={setInputs} />
                     </div>
                 </div>
-                <div style={{width:'100%', height:250, border:'solid'}}>
+                <div style={{width:'100%', height:250, border:'none'}}>
                     <Map 
                         startMarker={startMarker}
                         endMarker={endMarker}

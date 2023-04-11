@@ -31,18 +31,20 @@
 }
 
 .input-button{
-    color:white;
-    background-color: #292B2D;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    color:rgb(255, 255, 255);
+    background-color: var(--primary);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.1);
 
     cursor: pointer;
 }
 
 .input-button:hover{
-    background-color: #53575a;
+    background-color: #d08e48;
 
     transition: 0.2s;
 }
