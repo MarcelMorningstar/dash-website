@@ -1,10 +1,11 @@
-import React, {useState, useEffect, useRef} from "react"
+import React, {useState, useEffect, useRef, use} from "react"
 import Map from "./Map";
 import { usePlacesWidget } from "react-google-autocomplete";
 import {FiCheckCircle, FiArrowDown} from 'react-icons/fi';
 
 import styles from '../styles/WindowForm.module.css';
 
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 const checkRequiredInputs = (requirements, curInputs) => {
     let missingFields = [];
@@ -103,6 +104,11 @@ function TaxiForm(props){
         'setInputsDirect':props.setInputsDirect,
         'inputs':props.inputs
     }
+
+    const addons = [
+        {'name':'childseat', 'prettyname':(<div>Sēdeklis<br/>Bērnam</div>)},
+        {'name':'carerseat', 'prettyname':(<div>Sēdeklis<br/>Invalīdam</div>)}
+    ]
     
     return (
         <div>
@@ -122,8 +128,9 @@ function TaxiForm(props){
                         <InputSection name="Brauciena informācija">
                             <InputNumber placeholder="0" name="Sēdvietu skaits" ename='seat_amount' inputData={inputData} />
                             <InputDateTime name="Pieņemšanas laiks" ename='accept_time' inputData={inputData} />
-                            <InputCheckmark name="Bērnu sēdeklītis" ename='child_seat' inputData={inputData} />
-                            <InputTextarea name="Papildus komentāri" ename='comments' inputData={inputData} />
+                        </InputSection>
+                        <InputSection name="Pielikumi">
+                            <InputAddons addons={addons} inputData={inputData}/>
                         </InputSection>
                         <div style={{paddingBottom:30}}>
                             <InputConfirmation ename="conf_rules" inputData={inputData}>
@@ -378,9 +385,11 @@ function Authorisation(props){
                         </div>
                     </div>
                 </div>
-                <div style={{display:'flex', justifyContent:'space-between'}}>
-                    <InputButton name="Atcelt" click={() => {props.setPage(0)}}/>
-                    <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 2, props.setPage)}}/>
+                <div style={{position:'relative'}}>
+                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', position:'absolute', bottom:'-35px', width:'100%'}}>
+                        <InputButton name="Atcelt" click={() => {props.setPage(0)}}/>
+                        <InputButton name="Turpināt" click={() => {validateInput(requiredFields, setMissingFields, props.inputs, 2, props.setPage)}}/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -463,8 +472,10 @@ function SuccessWindow(props){
                     <div>Jūsu izsaukums tika apstiprināts!</div>
                     <div>Turpmāk mēs ar Jums sazināsimies caur Jūsu telefona numuru {props.inputs.number}</div>
                 </div>
-                <div style={{display:'flex', justifyContent:'flex-end'}}>
-                    <InputButton name="Pabeigt" click={() => {props.setWindowState({'show':false})}}/>
+                <div style={{position:'relative'}}>
+                    <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', position:'absolute', bottom:'-35px', width:'100%'}}>
+                        <InputButton name="Pabeigt" click={() => {props.setWindowState({'show':false})}}/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -693,6 +704,124 @@ function InputButton(props){
         <div onClick={_onClick} className={styles['input-button']}>
             <div>
                 {props.name}
+            </div>
+        </div>
+    )
+}
+
+function InputAddons(props){
+    const [localInputs, setInputs] = useState({});
+
+    useEffect(()=>{
+        props.addons.map((v) => {
+            setInputs(values => ({...values, [v.name]: false}));
+        });
+    }, []);
+
+    const [dragging, setDragging] = useState(false);
+    const [pos, setPos] = useState({top: 0, left: 0, x: 0, y: 0});
+    const [scrollPos, setScrollPos] = useState({top:0, left:0});
+
+    const ref = useRef(null);
+
+    const mouseMove = (e) => {
+        if(dragging){
+            var maxScrollLeft = e.target.scrollWidth - e.target.clientWidth;
+
+            const dx = e.clientX - pos.x;
+            const dy = e.clientY - pos.y;
+
+            setScrollPos({top:pos.top - dy, left:clamp(pos.left - dx, 0, 300)});
+        }
+    }
+
+    const mouseDown = (e) => {
+        setPos({left:scrollPos.left, top:scrollPos.top, x:e.clientX, y:e.clientY});
+        setDragging(true);
+    }
+
+    const mouseUp = (e) => {
+        setDragging(false);
+    }
+
+    if(ref !== null && ref.current !== null){
+        ref.current.scrollLeft = scrollPos.left;
+        ref.current.scrollRight = scrollPos.right;
+    }
+
+    console.log(localInputs)
+
+    return(
+        <div style={{
+            gridColumn:'span 2 / auto', 
+            display:'flex',
+            gap:5,
+            whiteSpace:'nowrap',
+            overflow:'hidden',
+            overflowX: 'hidden',
+            overflowY: 'hidden',
+            cursor:'grab',
+            userSelect:'none',
+        }}
+            onMouseDown={mouseDown}
+            onMouseUp={mouseUp}
+            onMouseMove={mouseMove}
+            onMouseLeave={(e)=>{setDragging(false)}}
+            ref={ref}
+        >
+            {
+                props.addons.map((t) => 
+                    <InputAddon key={t.name} localInputs={localInputs} setInputs={setInputs} data={t} />
+                )
+            }
+        </div>
+    )
+}
+
+function InputAddon(props){
+    const _onClick = () => {
+        props.setInputs(values => ({...values, [props.data.name]: !props.localInputs[props.data.name]}));
+    };
+
+    const checked = props.localInputs[props.data.name];
+    const checkMark = useRef(null);
+
+    const defaultStyle = {
+        backgroundColor:'rgba(0,0,0,0.2)',
+        minHeight:70,
+        maxHeight:70,
+        minWidth:80,
+        maxWidth:80,
+        borderRadius:'10%',
+        position:'relative'
+    };
+
+    const checkedStyle = {
+        backgroundColor:'rgba(0,0,0,0.2)',
+        minHeight:70,
+        maxHeight:70,
+        minWidth:80,
+        maxWidth:80,
+        border:'solid #F5AD17 2px',
+        borderRadius:'10%',
+        position:'relative',
+    };
+
+    var style = checked ? checkedStyle : defaultStyle;
+
+    if(checkMark !== null && checkMark.current !== null){
+        checkMark.current.checked = checked;
+    }
+
+    return(
+        <div style={
+            style
+        } onClick={_onClick}>
+            <div style={{position:'absolute', top:2, right:5}}><input type="checkbox" ref={checkMark}/></div>
+            <div style={{display:'flex', flexWrap:'wrap', placeContent:'center',height:'100%'}}>
+                <div style={{height:'fit-content', width:'100%', overflow:'hidden', overflowWrap:'break-word', textAlign:'center', fontSize:'0.8em'}}>
+                    {props.data.prettyname}
+                </div>
             </div>
         </div>
     )
