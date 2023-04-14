@@ -128,3 +128,16 @@
 
     background-color:var(--primary);
 }
+
+.input-divider-grid{
+    display:grid;
+    grid-template-columns:48% 48%;
+    justify-content:space-between
+}
+
+@media (max-width: 1200px) {
+    .input-divider-grid{
+        display:grid;
+        grid-template-columns: 100%;
+    }
+}

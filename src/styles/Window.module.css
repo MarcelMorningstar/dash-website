@@ -76,6 +76,8 @@
 @media (max-width: 1200px) {
     .window-wrapper{
         width: min(700px, 90vw);
+
+        transform: translate(-50%, 6vh);
     }
 
     .window-close{

@@ -116,7 +116,7 @@ function TaxiForm(props){
                 <h2>Taksometra izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
+                <div className={styles['input-divider-grid']}>
                     <div>
                         <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     </div>
@@ -182,7 +182,7 @@ function SecondDriverForm(props){
                 <h2>Otrā vadītāja izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
+                <div className={styles['input-divider-grid']}>
                     <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     <div>
                         <InputSection name="Kontaktinformācija">
@@ -251,7 +251,7 @@ function CourierForm(props){
                 <h2>Kurjera izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
+                <div className={styles['input-divider-grid']}>
                     <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     <div>
                         <InputSection name="Kontaktinformācija">
@@ -317,7 +317,7 @@ function EvacuatorForm(props){
                 <h2>Evakuatora izsaukšana</h2>
             </div>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-                <div style={{display:'grid', gridTemplateColumns:'48% 48%', justifyContent:'space-between'}}>
+                <div className={styles['input-divider-grid']}>
                     <FromToInput markers={props.extraData.markers} requireStartPoint={props.extraData.requireStartPoint} inputData={inputData}/>
                     <div>
                         <InputSection name="Kontaktinformācija">
