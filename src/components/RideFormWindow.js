@@ -258,8 +258,8 @@ function CourierForm(props){
                             <InputGeneric placeholder="Dokuments, ēdiens" name="Pasta saturs" ename='packageitems' inputData={inputData} />
                             <InputNumber  placeholder="1"  name="Pasta svars (kg)" ename='packagemass' inputData={inputData} />
                             <InputGeneric placeholder="0.25, 0.31, 0.26"  name="Pasta izmērs (x, y, z) (m)" ename='packagescale' inputData={inputData} />
-                            <InputDateTime name="Vēlamais saņemšanas datums un laiks" ename='taketime' inputData={inputData} setNow='true' />
-                            <InputDateTime name="Vēlamais piegādes datums un laiks" ename='providetime' inputData={inputData} setNow='true' />
+                            <InputDateTime name="Saņemšanas datums" ename='taketime' inputData={inputData} setNow='true' />
+                            <InputDateTime name="Piegādes datums" ename='providetime' inputData={inputData} setNow='true' />
                         </InputSection>
                         <div style={{paddingBottom:30}}>
                             <InputConfirmation ename='conf_mailrules' inputData={inputData}>
@@ -604,6 +604,12 @@ function InputNumber(props){
 function InputDateTime(props){
     const [now, setNow] = useState(props.setNow);
 
+    useEffect(()=>{
+        if(now){
+            props.inputData.setInputsDirect(values => ({...values, [props.ename]: 'now'}));
+        }
+    }, []);
+    
     const className = exists(props.inputData.missingFields, props.ename) ? styles['input-missing'] : styles['input'];
     const onChange = props.inputData.setInputs;
     const value = props.inputData.inputs[props.ename];
@@ -613,6 +619,8 @@ function InputDateTime(props){
             setNow(false);
         }else{
             setNow(true);
+
+            props.inputData.setInputsDirect(values => ({...values, [props.ename]: 'now'}));
         }
     }
 
@@ -628,7 +636,7 @@ function InputDateTime(props){
             <input value={value} name={props.ename} onChange={onChange} className={className} type="datetime-local" />
             {
                 props.setNow &&
-                <div style={{display:'flex', placeContent:'center', flexWrap:'wrap'}} onClick={()=>{setNow(true)}}>
+                <div style={{display:'flex', placeContent:'center', flexWrap:'wrap', cursor:'pointer'}} onClick={()=>{setNow(true)}}>
                     <div style={{height:'fit-content'}}>x</div>
                 </div>
             }
