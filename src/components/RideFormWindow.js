@@ -127,7 +127,7 @@ function TaxiForm(props){
                         </InputSection>
                         <InputSection name="Brauciena informācija">
                             <InputNumber placeholder="0" name="Sēdvietu skaits" ename='seat_amount' inputData={inputData} />
-                            <InputDateTime name="Pieņemšanas laiks" ename='accept_time' inputData={inputData} />
+                            <InputDateTime name="Pieņemšanas laiks" ename='accept_time' inputData={inputData} setNow='true' />
                         </InputSection>
                         <InputSection name="Pielikumi">
                             <InputAddons addons={addons} inputData={inputData}/>
@@ -156,9 +156,6 @@ function SecondDriverForm(props){
     const requiredFields = [
         {'inputName':'name'},
         {'inputName':'number'},
-        {'inputName':'automodel'},
-        {'inputName':'autonumber'},
-        {'inputName':'technicalchecktime'},
         {'inputName':'taketime'},
         {'inputName':'conf_driverrules', 'pattern':"false"},
         {'inputName':'conf_rules', 'pattern':"false"},
@@ -190,10 +187,7 @@ function SecondDriverForm(props){
                             <InputGeneric placeholder="+371 12341234" name="Telefona numurs" ename='number' inputData={inputData} />
                         </InputSection>
                         <InputSection name="Brauciena informācija">
-                            <InputGeneric placeholder="BMW x5" name="Autotransporta modelis" ename='automodel' inputData={inputData} />
-                            <InputGeneric placeholder="KJ-1234" name="Autotransporta numurs" ename='autonumber' inputData={inputData} />
-                            <InputDateTime name="Tehniskās apskates iziešanas datums" ename='technicalchecktime' inputData={inputData} />
-                            <InputDateTime name="Pieņemšanas laiks" ename='taketime' inputData={inputData} />
+                            <InputDateTime name="Pieņemšanas laiks" ename='taketime' inputData={inputData} setNow='true' />
                         </InputSection>
                         <div style={{paddingBottom:30}}>
                             <InputConfirmation ename='conf_driverrules' inputData={inputData}>
@@ -264,8 +258,8 @@ function CourierForm(props){
                             <InputGeneric placeholder="Dokuments, ēdiens" name="Pasta saturs" ename='packageitems' inputData={inputData} />
                             <InputNumber  placeholder="1"  name="Pasta svars (kg)" ename='packagemass' inputData={inputData} />
                             <InputGeneric placeholder="0.25, 0.31, 0.26"  name="Pasta izmērs (x, y, z) (m)" ename='packagescale' inputData={inputData} />
-                            <InputDateTime name="Vēlamais saņemšanas datums un laiks" ename='taketime' inputData={inputData} />
-                            <InputDateTime name="Vēlamais piegādes datums un laiks" ename='providetime' inputData={inputData} />
+                            <InputDateTime name="Vēlamais saņemšanas datums un laiks" ename='taketime' inputData={inputData} setNow='true' />
+                            <InputDateTime name="Vēlamais piegādes datums un laiks" ename='providetime' inputData={inputData} setNow='true' />
                         </InputSection>
                         <div style={{paddingBottom:30}}>
                             <InputConfirmation ename='conf_mailrules' inputData={inputData}>
@@ -608,9 +602,37 @@ function InputNumber(props){
 }
 
 function InputDateTime(props){
+    const [now, setNow] = useState(props.setNow);
+
     const className = exists(props.inputData.missingFields, props.ename) ? styles['input-missing'] : styles['input'];
     const onChange = props.inputData.setInputs;
     const value = props.inputData.inputs[props.ename];
+
+    const changeTimeType = (e) => {
+        if(e.target.value == "later"){
+            setNow(false);
+        }else{
+            setNow(true);
+        }
+    }
+
+    const inputField = now 
+    ? 
+        //<input value={'Tiesi tagad' /*value*/} name={props.ename} onChange={onChange} className={className} type="checkbox" />
+        <select className={className} onChange={changeTimeType}>
+            <option value="rightnow">Pēc iespējas ātrāk</option>
+            <option value="later">Izvēlēties laiku</option>
+        </select>
+    : 
+        <div style={{display:'flex', gap:10}}>
+            <input value={value} name={props.ename} onChange={onChange} className={className} type="datetime-local" />
+            {
+                props.setNow &&
+                <div style={{display:'flex', placeContent:'center', flexWrap:'wrap'}} onClick={()=>{setNow(true)}}>
+                    <div style={{height:'fit-content'}}>x</div>
+                </div>
+            }
+        </div>;
     
     return (
         <div>
@@ -618,7 +640,7 @@ function InputDateTime(props){
                 <p className={styles['input-label']}>{props.name}:</p>
             </div>
             <div>
-                <input value={value} name={props.ename} onChange={onChange} className={className} type="datetime-local" />
+                {inputField}
             </div>
         </div>
     )
