@@ -107,7 +107,7 @@ function TaxiForm(props){
 
     const addons = [
         {'name':'childseat', 'prettyname':(<div>Sēdeklis<br/>Bērnam</div>)},
-        {'name':'carerseat', 'prettyname':(<div>Sēdeklis<br/>Invalīdam</div>)}
+        {'name':'carerseat', 'prettyname':(<div>Aprīkojums<br/>Invalīdam</div>)}
     ]
     
     return (
