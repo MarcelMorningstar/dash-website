@@ -12,14 +12,14 @@ const checkRequiredInputs = (requirements, curInputs) => {
     
     requirements.map((requirement) => {
         let patternCheck = (requirement.pattern !== undefined && curInputs[requirement.inputName] !== requirement.pattern);
-        console.log(patternCheck);
+        //console.log(patternCheck);
         
         if(curInputs[requirement.inputName] === undefined || curInputs[requirement.inputName] == '' || patternCheck){
             missingFields.push(requirement.inputName);
         }
     });
 
-    console.log(missingFields);
+    //console.log(missingFields);
 
     return missingFields;
 }
@@ -30,7 +30,7 @@ const exists = (array, element) => {
 
 const validateInput = (requiredFields, setMissingFields, curInputs, page, setPage) => {
 
-    console.log(requiredFields,curInputs);
+    //console.log(requiredFields,curInputs);
 
     let currentlyMissingFields = checkRequiredInputs(requiredFields, curInputs);
     if(currentlyMissingFields.length > 0){
@@ -61,7 +61,7 @@ function MultiPageForm(props){
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}));
 
-        console.log(inputs);
+        //console.log(inputs);
     }
 
     const clonedPage = React.cloneElement(props.children[page], {

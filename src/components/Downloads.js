@@ -66,18 +66,9 @@ export default function Downloads(){
                         <p>-Sadarbojies ar mums un reģistrē savu uzņēmumu DASH reģistrā!</p>
                         <p>-Saņem uzlabojumus un atvieglojumus pakalpojumu sniegšanā!</p>
                     </DownloadsWindow>
-                    <div 
-                        className={styles['download-window']} 
-                        style={{
-                                position:'relative',
-                                backgroundColor:'rgb(240,240,240)',
-                                minHeight:300
-                            }}>
-                        
-                        <div>
-                            <iframe style={{border:'none', left:0, top:0, position:'absolute', height:'100%', width:'100%'}} src="https://www.youtube.com/embed/md0RE96WHCA?autoplay=1&mute=1" title="YouTube video player"></iframe>
-                        </div>
-                    </div>
+                    <video className={styles['download-video']} controls muted autoPlay loop>
+                        <source src="/assets/DASHv4.mp4" />
+                    </video>
                 </div>
             </div>
         </div>
